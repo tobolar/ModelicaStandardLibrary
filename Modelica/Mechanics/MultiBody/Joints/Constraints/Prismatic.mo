@@ -54,34 +54,22 @@ equation
   ones(3)={R_rel.T[1,1], R_rel.T[2,2], R_rel.T[3,3]};
 
   // Constraint equations concerning translations
-  if x_locked and y_locked and z_locked then
-    r_rel_a=zeros(3);
-  elseif x_locked and y_locked and not z_locked then
+  if x_locked then
     r_rel_a[1]=0;
-    r_rel_a[2]=0;
-    frame_a.f[3]=0;
-  elseif x_locked and not y_locked and z_locked then
-    r_rel_a[1]=0;
-    r_rel_a[3]=0;
-    frame_a.f[2]=0;
-  elseif x_locked and not y_locked and not z_locked then
-    r_rel_a[1]=0;
-    frame_a.f[2]=0;
-    frame_a.f[3]=0;
-  elseif not x_locked and y_locked and z_locked then
-    r_rel_a[2]=0;
-    r_rel_a[3]=0;
-    frame_a.f[1]=0;
-  elseif not x_locked and y_locked and not z_locked then
-    r_rel_a[2]=0;
-    frame_a.f[1]=0;
-    frame_a.f[3]=0;
-  elseif not x_locked and not y_locked and z_locked then
-    r_rel_a[3]=0;
-    frame_a.f[1]=0;
-    frame_a.f[2]=0;
   else
-    frame_a.f=zeros(3);
+    frame_a.f[1]=0;
+  end if;
+
+  if y_locked then
+    r_rel_a[2]=0;
+  else
+    frame_a.f[2]=0;
+  end if;
+
+  if z_locked then
+    r_rel_a[3]=0;
+  else
+    frame_a.f[3]=0;
   end if;
 
   zeros(3) = frame_a.t + Frames.resolve1(R_rel, frame_b.t) + cross(r_rel_a,
