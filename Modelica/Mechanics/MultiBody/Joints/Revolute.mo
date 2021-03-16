@@ -18,6 +18,8 @@ model Revolute
 
   parameter Boolean useAxisFlange=false "= true, if axis flange is enabled"
     annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean fixSupport=false "= true, if support flange is fixed to ground"
+    annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean animation=true
     "= true, if animation shall be enabled (show axis as cylinder)";
   parameter Modelica.Mechanics.MultiBody.Types.Axis n={0,0,1}
@@ -55,6 +57,7 @@ Possible reasons:
   SI.AngularAcceleration a(start=0)
     "Second derivative of angle phi (relative angular acceleration)";
   SI.Torque tau "Driving torque in direction of axis of rotation";
+  SI.Torque tau_support "Torque on support flange in direction of axis of rotation";
   SI.Angle angle "= phi";
 
 protected
@@ -77,13 +80,16 @@ protected
     R=frame_a.R) if world.enableAnimation and animation;
 
 protected
-  Modelica.Mechanics.Rotational.Components.Fixed fixed
-    "support flange is fixed to ground"
-    annotation (Placement(transformation(extent={{-70,70},{-50,90}})));
+  Modelica.Mechanics.Rotational.Components.Fixed fixed if fixSupport
+    "Fixed ground"
+    annotation (Placement(transformation(extent={{-90,70},{-70,90}})));
   Rotational.Interfaces.InternalSupport internalAxis(tau=tau)
     annotation (Placement(transformation(extent={{-10,90},{10,70}})));
   Rotational.Sources.ConstantTorque constantTorque(tau_constant=0) if not useAxisFlange
     annotation (Placement(transformation(extent={{40,70},{20,90}})));
+  Rotational.Interfaces.InternalSupport internalSupport(tau=tau_support) annotation (Placement(transformation(extent={{-70,90},{-50,70}})));
+  Rotational.Sources.ConstantTorque zeroTorqueSupport(tau_constant=0) if
+    not useAxisFlange annotation (Placement(transformation(extent={{-20,70},{-40,90}})));
 equation
   Connections.branch(frame_a.R, frame_b.R);
 
@@ -96,33 +102,48 @@ equation
   w = der(phi);
   a = der(w);
 
-  // relationships between quantities of frame_a and of frame_b
+  // Relationships between quantities of frame_a and of frame_b
   frame_b.r_0 = frame_a.r_0;
 
   if Connections.rooted(frame_a.R) then
     R_rel = Frames.planarRotation(e, phi, w);
     frame_b.R = Frames.absoluteRotation(frame_a.R, R_rel);
     frame_a.f = -Frames.resolve1(R_rel, frame_b.f);
-    frame_a.t = -Frames.resolve1(R_rel, frame_b.t);
+    frame_a.t + tau_support*e = -Frames.resolve1(R_rel, frame_b.t + tau*e);
   else
     R_rel = Frames.planarRotation(-e, phi, w);
     frame_a.R = Frames.absoluteRotation(frame_b.R, R_rel);
     frame_b.f = -Frames.resolve1(R_rel, frame_a.f);
-    frame_b.t = -Frames.resolve1(R_rel, frame_a.t);
+    frame_b.t + tau*e = -Frames.resolve1(R_rel, frame_a.t + tau_support*e);
   end if;
 
   // d'Alemberts principle
   tau = -frame_b.t*e;
+  if useAxisFlange then
+    if fixSupport then
+      internalSupport.phi = 0;
+      //tau_support = 0;
+    else
+      tau_support = -frame_a.t*e;
+    end if;
+  else
+    if fixSupport then
+      internalSupport.phi = 0;
+    else
+      tau_support = -frame_a.t*e;
+    end if;
+  end if;
 
   // Connection to internal connectors
-  phi = internalAxis.phi;
+  phi = internalAxis.phi - internalSupport.phi;
 
-  connect(fixed.flange, support) annotation (Line(
-      points={{-60,80},{-60,100}}));
   connect(internalAxis.flange, axis) annotation (Line(
       points={{0,80},{0,100}}));
   connect(constantTorque.flange, internalAxis.flange) annotation (Line(
       points={{20,80},{0,80}}));
+  connect(support, internalSupport.flange) annotation (Line(points={{-60,100},{-60,80}}, color={0,0,0}));
+  connect(zeroTorqueSupport.flange, internalSupport.flange) annotation (Line(points={{-40,80},{-60,80}}, color={0,0,0}));
+  connect(fixed.flange, internalSupport.flange) annotation (Line(points={{-80,80},{-60,80}}, color={0,0,0}));
   annotation (
     Icon(coordinateSystem(
         preserveAspectRatio=true,
