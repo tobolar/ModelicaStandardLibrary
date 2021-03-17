@@ -79,10 +79,6 @@ protected
     r=frame_a.r_0,
     R=frame_a.R) if world.enableAnimation and animation;
 
-protected
-  Modelica.Mechanics.Rotational.Components.Fixed fixed if fixSupport
-    "Fixed ground"
-    annotation (Placement(transformation(extent={{-90,70},{-70,90}})));
   Rotational.Interfaces.InternalSupport internalAxis(tau=tau)
     annotation (Placement(transformation(extent={{-10,90},{10,70}})));
   Rotational.Sources.ConstantTorque constantTorque(tau_constant=0) if not useAxisFlange
@@ -109,29 +105,28 @@ equation
     R_rel = Frames.planarRotation(e, phi, w);
     frame_b.R = Frames.absoluteRotation(frame_a.R, R_rel);
     frame_a.f = -Frames.resolve1(R_rel, frame_b.f);
-    frame_a.t + tau_support*e = -Frames.resolve1(R_rel, frame_b.t + tau*e);
+    if fixSupport then
+      frame_a.t = -Frames.resolve1(R_rel, frame_b.t);
+    else
+      frame_a.t + tau_support*e = -Frames.resolve1(R_rel, frame_b.t + tau*e);
+    end if;
   else
     R_rel = Frames.planarRotation(-e, phi, w);
     frame_a.R = Frames.absoluteRotation(frame_b.R, R_rel);
     frame_b.f = -Frames.resolve1(R_rel, frame_a.f);
-    frame_b.t + tau*e = -Frames.resolve1(R_rel, frame_a.t + tau_support*e);
+    if fixSupport then
+      frame_b.t = -Frames.resolve1(R_rel, frame_a.t);
+    else
+      frame_b.t + tau*e = -Frames.resolve1(R_rel, frame_a.t + tau_support*e);
+    end if;
   end if;
 
   // d'Alemberts principle
   tau = -frame_b.t*e;
-  if useAxisFlange then
-    if fixSupport then
-      internalSupport.phi = 0;
-      //tau_support = 0;
-    else
-      tau_support = -frame_a.t*e;
-    end if;
+  if fixSupport or not useAxisFlange then
+    internalSupport.phi = 0;
   else
-    if fixSupport then
-      internalSupport.phi = 0;
-    else
-      tau_support = -frame_a.t*e;
-    end if;
+    tau_support = -frame_a.t*e;
   end if;
 
   // Connection to internal connectors
@@ -143,7 +138,6 @@ equation
       points={{20,80},{0,80}}));
   connect(support, internalSupport.flange) annotation (Line(points={{-60,100},{-60,80}}, color={0,0,0}));
   connect(zeroTorqueSupport.flange, internalSupport.flange) annotation (Line(points={{-40,80},{-60,80}}, color={0,0,0}));
-  connect(fixed.flange, internalSupport.flange) annotation (Line(points={{-80,80},{-60,80}}, color={0,0,0}));
   annotation (
     Icon(coordinateSystem(
         preserveAspectRatio=true,
