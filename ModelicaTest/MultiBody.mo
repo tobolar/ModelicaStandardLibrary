@@ -4551,20 +4551,11 @@ and plot gasForce.press over gasForce.s_rel.
       annotation (experiment(StopTime=1.1));
     end RevoluteInitialization;
 
-    model RevoluteSupportFixed
+    model RevoluteFixSupport
       extends Modelica.Icons.Example;
 
       inner MultiBody.World world(animateWorld=false,
-          animateGravity=false) annotation (Placement(transformation(extent={{-100,-10},{-80,10}})));
-      MultiBody.Joints.Revolute revolute(
-        useAxisFlange=true,
-        fixSupport=true,
-        n={0,0,1},
-        cylinderDiameter=1/15,
-        a(fixed=false),
-        phi(fixed=true, start=0.78539816339745),
-        w(fixed=true, start=0.1))
-                       annotation (Placement(transformation(extent={{-10,80},{10,100}})));
+          animateGravity=false) annotation (Placement(transformation(extent={{-160,-120},{-140,-100}})));
       MultiBody.Joints.Revolute revolute1(
         useAxisFlange=true,
         fixSupport=true,
@@ -4572,8 +4563,7 @@ and plot gasForce.press over gasForce.s_rel.
         cylinderDiameter=1/15,
         a(fixed=false),
         phi(fixed=true, start=0.78539816339745),
-        w(fixed=true, start=0.1))
-                       annotation (Placement(transformation(extent={{-10,20},{10,40}})));
+        w(fixed=true, start=0.1)) annotation (Placement(transformation(extent={{-100,80},{-80,100}})));
       MultiBody.Joints.Revolute revolute2(
         useAxisFlange=true,
         fixSupport=true,
@@ -4582,7 +4572,7 @@ and plot gasForce.press over gasForce.s_rel.
         a(fixed=false),
         phi(fixed=true, start=0.78539816339745),
         w(fixed=true, start=0.1))
-                       annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
+        annotation (Placement(transformation(extent={{-100,20},{-80,40}})));
       MultiBody.Joints.Revolute revolute3(
         useAxisFlange=true,
         fixSupport=true,
@@ -4591,74 +4581,690 @@ and plot gasForce.press over gasForce.s_rel.
         a(fixed=false),
         phi(fixed=true, start=0.78539816339745),
         w(fixed=true, start=0.1))
-                       annotation (Placement(transformation(extent={{-10,-100},{10,-80}})));
-      MultiBody.Parts.Body body(
-        animation=false,
-        r_CM={0,0,0},
-        m=1) annotation (Placement(transformation(extent={{40,80},{60,100}})));
+        annotation (Placement(transformation(extent={{-100,-50},{-80,-30}})));
+      MultiBody.Joints.Revolute revolute4(
+        useAxisFlange=true,
+        fixSupport=true,
+        n={0,0,1},
+        cylinderDiameter=1/15,
+        a(fixed=false),
+        phi(fixed=true, start=0.78539816339745),
+        w(fixed=true, start=0.1))
+        annotation (Placement(transformation(extent={{-100,-100},{-80,-80}})));
+      MultiBody.Joints.Revolute revolute5(
+        useAxisFlange=true,
+        fixFlange=Modelica.Mechanics.MultiBody.Types.FixFlange.by3DRoot,
+        fixSupport=true,
+        n={0,0,1},
+        cylinderDiameter=1/15,
+        a(fixed=false),
+        phi(fixed=true, start=0.78539816339745),
+        w(fixed=true, start=0.1))
+        annotation (Placement(transformation(extent={{-10,80},{10,100}})));
+      MultiBody.Joints.Revolute revolute6(
+        useAxisFlange=true,
+        fixFlange=Modelica.Mechanics.MultiBody.Types.FixFlange.by3DRoot,
+        fixSupport=true,
+        n={0,0,1},
+        cylinderDiameter=1/15,
+        a(fixed=false),
+        phi(fixed=true, start=0.78539816339745),
+        w(fixed=true, start=0.1))
+        annotation (Placement(transformation(extent={{-10,20},{10,40}})));
+      MultiBody.Joints.Revolute revolute7(
+        useAxisFlange=true,
+        fixFlange=Modelica.Mechanics.MultiBody.Types.FixFlange.by3DRoot,
+        fixSupport=true,
+        n={0,0,1},
+        cylinderDiameter=1/15,
+        a(fixed=false),
+        phi(fixed=true, start=0.78539816339745),
+        w(fixed=true, start=0.1))
+        annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
+      MultiBody.Joints.Revolute revolute8(
+        useAxisFlange=true,
+        fixFlange=Modelica.Mechanics.MultiBody.Types.FixFlange.by3DRoot,
+        fixSupport=true,
+        n={0,0,1},
+        cylinderDiameter=1/15,
+        a(fixed=false),
+        phi(fixed=true, start=0.78539816339745),
+        w(fixed=true, start=0.1))
+        annotation (Placement(transformation(extent={{-10,-100},{10,-80}})));
+      MultiBody.Joints.Revolute revolute9(
+        useAxisFlange=true,
+        fixFlange=Modelica.Mechanics.MultiBody.Types.FixFlange.none,
+        fixSupport=true,
+        n={0,0,1},
+        cylinderDiameter=1/15,
+        a(fixed=false),
+        phi(fixed=true, start=0.78539816339745),
+        w(fixed=true, start=0.1))
+        annotation (Placement(transformation(extent={{80,80},{100,100}})));
+      MultiBody.Joints.Revolute revolute10(
+        useAxisFlange=true,
+        fixFlange=Modelica.Mechanics.MultiBody.Types.FixFlange.none,
+        fixSupport=true,
+        n={0,0,1},
+        cylinderDiameter=1/15,
+        a(fixed=false),
+        phi(fixed=true, start=0.78539816339745),
+        w(fixed=true, start=0.1)) annotation (Placement(transformation(extent={{80,20},{100,40}})));
+      MultiBody.Joints.Revolute revolute11(
+        useAxisFlange=true,
+        fixFlange=Modelica.Mechanics.MultiBody.Types.FixFlange.none,
+        fixSupport=true,
+        n={0,0,1},
+        cylinderDiameter=1/15,
+        a(fixed=false),
+        phi(fixed=true, start=0.78539816339745),
+        w(fixed=true, start=0.1))
+        annotation (Placement(transformation(extent={{80,-50},{100,-30}})));
+      MultiBody.Joints.Revolute revolute12(
+        useAxisFlange=true,
+        fixFlange=Modelica.Mechanics.MultiBody.Types.FixFlange.none,
+        fixSupport=true,
+        n={0,0,1},
+        cylinderDiameter=1/15,
+        a(fixed=false),
+        phi(fixed=true, start=0.78539816339745),
+        w(fixed=true, start=0.1))
+        annotation (Placement(transformation(extent={{80,-100},{100,-80}})));
       MultiBody.Parts.Body body1(
         animation=false,
         r_CM={0,0,0},
-        m=1) annotation (Placement(transformation(extent={{40,20},{60,40}})));
+        m=1,
+        I_33=1) annotation (Placement(transformation(extent={{-70,80},{-50,100}})));
       MultiBody.Parts.Body body2(
         animation=false,
         r_CM={0,0,0},
-        m=1) annotation (Placement(transformation(extent={{40,-40},{60,-20}})));
+        m=1,
+        I_33=1)
+             annotation (Placement(transformation(extent={{-70,20},{-50,40}})));
       MultiBody.Parts.Body body3(
         animation=false,
         r_CM={0,0,0},
-        m=1) annotation (Placement(transformation(extent={{40,-100},{60,-80}})));
-      Modelica.Mechanics.Rotational.Sources.ConstantTorque torque_a1(tau_constant=3) annotation (Placement(transformation(extent={{30,40},{10,60}})));
-      Modelica.Mechanics.Rotational.Sources.ConstantTorque torque_a2(tau_constant=torque_a1.tau_constant) annotation (Placement(transformation(extent={{30,-20},{10,0}})));
-      Modelica.Mechanics.Rotational.Sources.ConstantTorque torque_b2(tau_constant=-2) annotation (Placement(transformation(extent={{-30,-20},{-10,0}})));
-      Modelica.Mechanics.Rotational.Sources.ConstantTorque torque_b3(tau_constant=torque_b2.tau_constant) annotation (Placement(transformation(extent={{-30,-80},{-10,-60}})));
+        m=1,
+        I_33=1)
+             annotation (Placement(transformation(extent={{-70,-50},{-50,-30}})));
+      MultiBody.Parts.Body body4(
+        animation=false,
+        r_CM={0,0,0},
+        m=1,
+        I_33=1)
+             annotation (Placement(transformation(extent={{-70,-100},{-50,-80}})));
+      MultiBody.Parts.Body body5(
+        animation=false,
+        r_CM={0,0,0},
+        m=1,
+        I_33=1)
+             annotation (Placement(transformation(extent={{20,80},{40,100}})));
+      MultiBody.Parts.Body body6(
+        animation=false,
+        r_CM={0,0,0},
+        m=1,
+        I_33=1)
+             annotation (Placement(transformation(extent={{20,20},{40,40}})));
+      MultiBody.Parts.Body body7(
+        animation=false,
+        r_CM={0,0,0},
+        m=1,
+        I_33=1)
+             annotation (Placement(transformation(extent={{20,-50},{40,-30}})));
+      MultiBody.Parts.Body body8(
+        animation=false,
+        r_CM={0,0,0},
+        m=1,
+        I_33=1)
+             annotation (Placement(transformation(extent={{20,-100},{40,-80}})));
+      MultiBody.Parts.Body body9(
+        animation=false,
+        r_CM={0,0,0},
+        m=1,
+        I_33=1)
+             annotation (Placement(transformation(extent={{110,80},{130,100}})));
+      MultiBody.Parts.Body body10(
+        animation=false,
+        r_CM={0,0,0},
+        m=1,
+        I_33=1) annotation (Placement(transformation(extent={{110,20},{130,40}})));
+      MultiBody.Parts.Body body11(
+        animation=false,
+        r_CM={0,0,0},
+        m=1,
+        I_33=1)
+             annotation (Placement(transformation(extent={{110,-50},{130,-30}})));
+      MultiBody.Parts.Body body12(
+        animation=false,
+        r_CM={0,0,0},
+        m=1,
+        I_33=1)
+             annotation (Placement(transformation(extent={{110,-100},{130,-80}})));
+      Modelica.Mechanics.Rotational.Sources.ConstantTorque torque_a2(tau_constant=3) annotation (Placement(transformation(extent={{-60,46},{-80,66}})));
+      Modelica.Mechanics.Rotational.Sources.ConstantTorque torque_a3(tau_constant=torque_a2.tau_constant) annotation (Placement(transformation(extent={{-60,-24},{-80,-4}})));
+      Modelica.Mechanics.Rotational.Sources.ConstantTorque torque_b3(tau_constant=-2) annotation (Placement(transformation(extent={{-120,-24},{-100,-4}})));
+      Modelica.Mechanics.Rotational.Sources.ConstantTorque torque_b4(tau_constant=torque_b3.tau_constant) annotation (Placement(transformation(extent={{-120,-80},{-100,-60}})));
+      Modelica.Mechanics.Rotational.Sources.ConstantTorque torque_a6(tau_constant=torque_a2.tau_constant)
+                                                                                     annotation (Placement(transformation(extent={{30,46},{10,66}})));
+      Modelica.Mechanics.Rotational.Sources.ConstantTorque torque_a7(tau_constant=torque_a2.tau_constant) annotation (Placement(transformation(extent={{30,-24},{10,-4}})));
+      Modelica.Mechanics.Rotational.Sources.ConstantTorque torque_b7(tau_constant=torque_b3.tau_constant)
+                                                                                      annotation (Placement(transformation(extent={{-30,-24},{-10,-4}})));
+      Modelica.Mechanics.Rotational.Sources.ConstantTorque torque_b8(tau_constant=torque_b3.tau_constant) annotation (Placement(transformation(extent={{-30,-80},{-10,-60}})));
+      Modelica.Mechanics.Rotational.Sources.ConstantTorque torque_a10(tau_constant=torque_a2.tau_constant) annotation (Placement(transformation(extent={{120,46},{100,66}})));
+      Modelica.Mechanics.Rotational.Sources.ConstantTorque torque_a11(tau_constant=torque_a2.tau_constant) annotation (Placement(transformation(extent={{120,-24},{100,-4}})));
+      Modelica.Mechanics.Rotational.Sources.ConstantTorque torque_b11(tau_constant=torque_b3.tau_constant) annotation (Placement(transformation(extent={{60,-24},{80,-4}})));
+      Modelica.Mechanics.Rotational.Sources.ConstantTorque torque_b12(tau_constant=torque_b3.tau_constant) annotation (Placement(transformation(extent={{60,-80},{80,-60}})));
+      Modelica.Mechanics.Rotational.Components.Fixed fixed annotation (Placement(transformation(
+            extent={{-10,-10},{10,10}},
+            rotation=90,
+            origin={150,0})));
     equation
-      connect(world.frame_b, revolute.frame_a) annotation (Line(
-          points={{-80,0},{-50,0},{-50,90},{-10,90}},
-          color={95,95,95},
-          thickness=0.5));
-      connect(revolute.frame_b, body.frame_a) annotation (Line(
-          points={{10,90},{40,90}},
-          color={95,95,95},
-          thickness=0.5));
       connect(world.frame_b, revolute1.frame_a) annotation (Line(
-          points={{-80,0},{-50,0},{-50,30},{-10,30}},
+          points={{-140,-110},{-130,-110},{-130,90},{-100,90}},
           color={95,95,95},
           thickness=0.5));
       connect(revolute1.frame_b, body1.frame_a) annotation (Line(
-          points={{10,30},{40,30}},
+          points={{-80,90},{-70,90}},
           color={95,95,95},
           thickness=0.5));
-      connect(torque_a1.flange, revolute1.axis) annotation (Line(points={{10,50},{0,50},{0,40}}, color={0,0,0}));
-      connect(world.frame_b, revolute2.frame_a) annotation (Line(
-          points={{-80,0},{-50,0},{-50,-30},{-10,-30}},
+      connect(world.frame_b,revolute2. frame_a) annotation (Line(
+          points={{-140,-110},{-130,-110},{-130,30},{-100,30}},
           color={95,95,95},
           thickness=0.5));
-      connect(revolute2.frame_b, body2.frame_a) annotation (Line(
-          points={{10,-30},{40,-30}},
+      connect(revolute2.frame_b,body2. frame_a) annotation (Line(
+          points={{-80,30},{-70,30}},
           color={95,95,95},
           thickness=0.5));
-      connect(torque_a2.flange, revolute2.axis) annotation (Line(points={{10,-10},{0,-10},{0,-20}}, color={0,0,0}));
-      connect(torque_b2.flange, revolute2.support) annotation (Line(points={{-10,-10},{-6,-10},{-6,-20}}, color={0,0,0}));
-      connect(world.frame_b, revolute3.frame_a) annotation (Line(
-          points={{-80,0},{-50,0},{-50,-90},{-10,-90}},
+      connect(torque_a2.flange,revolute2. axis) annotation (Line(points={{-80,56},{-90,56},{-90,40}},
+                                                                                                 color={0,0,0}));
+      connect(world.frame_b,revolute3. frame_a) annotation (Line(
+          points={{-140,-110},{-130,-110},{-130,-40},{-100,-40}},
           color={95,95,95},
           thickness=0.5));
-      connect(revolute3.frame_b, body3.frame_a) annotation (Line(
-          points={{10,-90},{40,-90}},
+      connect(revolute3.frame_b,body3. frame_a) annotation (Line(
+          points={{-80,-40},{-70,-40}},
           color={95,95,95},
           thickness=0.5));
-      connect(torque_b3.flange, revolute3.support) annotation (Line(points={{-10,-70},{-6,-70},{-6,-80}}, color={0,0,0}));
-      annotation (experiment(StopTime=1.1));
-    end RevoluteSupportFixed;
+      connect(torque_a3.flange,revolute3. axis) annotation (Line(points={{-80,-14},{-90,-14},{-90,-30}},
+                                                                                                    color={0,0,0}));
+      connect(torque_b3.flange,revolute3. support) annotation (Line(points={{-100,-14},{-96,-14},{-96,-30}},
+                                                                                                          color={0,0,0}));
+      connect(world.frame_b,revolute4. frame_a) annotation (Line(
+          points={{-140,-110},{-130,-110},{-130,-90},{-100,-90}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(revolute4.frame_b,body4. frame_a) annotation (Line(
+          points={{-80,-90},{-70,-90}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(torque_b4.flange,revolute4. support) annotation (Line(points={{-100,-70},{-96,-70},{-96,-80}},
+                                                                                                          color={0,0,0}));
+      connect(world.frame_b,revolute5. frame_a) annotation (Line(
+          points={{-140,-110},{-38,-110},{-38,90},{-10,90}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(revolute5.frame_b,body5. frame_a) annotation (Line(
+          points={{10,90},{20,90}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(world.frame_b,revolute6. frame_a) annotation (Line(
+          points={{-140,-110},{-38,-110},{-38,30},{-10,30}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(revolute6.frame_b,body6. frame_a) annotation (Line(
+          points={{10,30},{20,30}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(torque_a6.flange,revolute6. axis) annotation (Line(points={{10,56},{0,56},{0,40}}, color={0,0,0}));
+      connect(world.frame_b,revolute7. frame_a) annotation (Line(
+          points={{-140,-110},{-38,-110},{-38,-40},{-10,-40}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(revolute7.frame_b,body7. frame_a) annotation (Line(
+          points={{10,-40},{20,-40}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(torque_a7.flange,revolute7. axis) annotation (Line(points={{10,-14},{0,-14},{0,-30}}, color={0,0,0}));
+      connect(torque_b7.flange,revolute7. support) annotation (Line(points={{-10,-14},{-6,-14},{-6,-30}}, color={0,0,0}));
+      connect(world.frame_b,revolute8. frame_a) annotation (Line(
+          points={{-140,-110},{-38,-110},{-38,-90},{-10,-90}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(revolute8.frame_b,body8. frame_a) annotation (Line(
+          points={{10,-90},{20,-90}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(torque_b8.flange,revolute8. support) annotation (Line(points={{-10,-70},{-6,-70},{-6,-80}}, color={0,0,0}));
+      connect(world.frame_b,revolute9. frame_a) annotation (Line(
+          points={{-140,-110},{52,-110},{52,90},{80,90}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(revolute9.frame_b,body9. frame_a) annotation (Line(
+          points={{100,90},{110,90}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(world.frame_b, revolute10.frame_a) annotation (Line(
+          points={{-140,-110},{52,-110},{52,30},{80,30}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(revolute10.frame_b, body10.frame_a) annotation (Line(
+          points={{100,30},{110,30}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(torque_a10.flange, revolute10.axis) annotation (Line(points={{100,56},{90,56},{90,40}}, color={0,0,0}));
+      connect(world.frame_b,revolute11. frame_a) annotation (Line(
+          points={{-140,-110},{52,-110},{52,-40},{80,-40}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(revolute11.frame_b,body11. frame_a) annotation (Line(
+          points={{100,-40},{110,-40}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(torque_a11.flange, revolute11.axis) annotation (Line(points={{100,-14},{90,-14},{90,-30}}, color={0,0,0}));
+      connect(torque_b11.flange, revolute11.support) annotation (Line(points={{80,-14},{84,-14},{84,-30}}, color={0,0,0}));
+      connect(world.frame_b,revolute12. frame_a) annotation (Line(
+          points={{-140,-110},{52,-110},{52,-90},{80,-90}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(revolute12.frame_b,body12. frame_a) annotation (Line(
+          points={{100,-90},{110,-90}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(torque_b12.flange, revolute12.support) annotation (Line(points={{80,-70},{84,-70},{84,-80}}, color={0,0,0}));
+      connect(fixed.flange, revolute9.support) annotation (Line(points={{150,0},{140,0},{140,104},{84,104},{84,100}}, color={0,0,0}));
+      connect(fixed.flange, revolute10.support) annotation (Line(points={{150,0},{140,0},{140,8},{70,8},{70,48},{84,48},{84,40}}, color={0,0,0}));
+      connect(fixed.flange, revolute11.support) annotation (Line(points={{150,0},{140,0},{140,8},{84,8},{84,-30}}, color={0,0,0}));
+      connect(fixed.flange, revolute12.support) annotation (Line(points={{150,0},{140,0},{140,-70},{84,-70},{84,-80}}, color={0,0,0}));
+      annotation (experiment(StopTime=1.1),
+        Diagram(coordinateSystem(extent={{-160,-120},{160,120}}), graphics={
+            Line(
+              points={{-44,120},{-44,-120}},
+              color={255,128,0},
+              pattern=LinePattern.Dash,
+              thickness=0.5),
+            Text(
+              extent={{-130,118},{-44,108}},
+              textColor={255,128,0},
+              textString="fixFlange = support"),
+            Text(
+              extent={{-42,118},{44,108}},
+              textColor={255,128,0},
+              textString="fixFlange = by3DRoot"),
+            Text(
+              extent={{48,118},{128,108}},
+              textColor={255,128,0},
+              textString="fixFlange = none"),
+            Line(
+              points={{46,120},{46,-120}},
+              color={255,128,0},
+              pattern=LinePattern.Dash,
+              thickness=0.5)}),
+        Icon(coordinateSystem(extent={{-100,-100},{100,100}})));
+    end RevoluteFixSupport;
+
+    model RevoluteFixAxis
+      extends Modelica.Icons.Example;
+
+      inner MultiBody.World world(animateWorld=false,
+          animateGravity=false) annotation (Placement(transformation(extent={{-160,-120},{-140,-100}})));
+      MultiBody.Joints.Revolute revolute1(
+        useAxisFlange=true,
+        fixFlange=Modelica.Mechanics.MultiBody.Types.FixFlange.axis,
+        fixSupport=true,
+        n={0,0,1},
+        cylinderDiameter=1/15,
+        a(fixed=false),
+        phi(fixed=true, start=0.78539816339745),
+        w(fixed=true, start=0.1)) annotation (Placement(transformation(extent={{-100,80},{-80,100}})));
+      MultiBody.Joints.Revolute revolute2(
+        useAxisFlange=true,
+        fixFlange=Modelica.Mechanics.MultiBody.Types.FixFlange.axis,
+        fixSupport=true,
+        n={0,0,1},
+        cylinderDiameter=1/15,
+        a(fixed=false),
+        phi(fixed=true, start=0.78539816339745),
+        w(fixed=true, start=0.1))
+        annotation (Placement(transformation(extent={{-100,20},{-80,40}})));
+      MultiBody.Joints.Revolute revolute3(
+        useAxisFlange=true,
+        fixFlange=Modelica.Mechanics.MultiBody.Types.FixFlange.axis,
+        fixSupport=true,
+        n={0,0,1},
+        cylinderDiameter=1/15,
+        a(fixed=false),
+        phi(fixed=true, start=0.78539816339745),
+        w(fixed=true, start=0.1))
+        annotation (Placement(transformation(extent={{-100,-50},{-80,-30}})));
+      MultiBody.Joints.Revolute revolute4(
+        useAxisFlange=true,
+        fixFlange=Modelica.Mechanics.MultiBody.Types.FixFlange.axis,
+        fixSupport=true,
+        n={0,0,1},
+        cylinderDiameter=1/15,
+        a(fixed=false),
+        phi(fixed=true, start=0.78539816339745),
+        w(fixed=true, start=0.1))
+        annotation (Placement(transformation(extent={{-100,-100},{-80,-80}})));
+      MultiBody.Joints.Revolute revolute5(
+        useAxisFlange=true,
+        fixFlange=Modelica.Mechanics.MultiBody.Types.FixFlange.by3DRoot,
+        fixSupport=true,
+        n={0,0,1},
+        cylinderDiameter=1/15,
+        a(fixed=false),
+        phi(fixed=true, start=0.78539816339745),
+        w(fixed=true, start=0.1))
+        annotation (Placement(transformation(extent={{-10,80},{10,100}})));
+      MultiBody.Joints.Revolute revolute6(
+        useAxisFlange=true,
+        fixFlange=Modelica.Mechanics.MultiBody.Types.FixFlange.by3DRoot,
+        fixSupport=true,
+        n={0,0,1},
+        cylinderDiameter=1/15,
+        a(fixed=false),
+        phi(fixed=true, start=0.78539816339745),
+        w(fixed=true, start=0.1))
+        annotation (Placement(transformation(extent={{-10,20},{10,40}})));
+      MultiBody.Joints.Revolute revolute7(
+        useAxisFlange=true,
+        fixFlange=Modelica.Mechanics.MultiBody.Types.FixFlange.by3DRoot,
+        fixSupport=true,
+        n={0,0,1},
+        cylinderDiameter=1/15,
+        a(fixed=false),
+        phi(fixed=true, start=0.78539816339745),
+        w(fixed=true, start=0.1))
+        annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
+      MultiBody.Joints.Revolute revolute8(
+        useAxisFlange=true,
+        fixFlange=Modelica.Mechanics.MultiBody.Types.FixFlange.by3DRoot,
+        fixSupport=true,
+        n={0,0,1},
+        cylinderDiameter=1/15,
+        a(fixed=false),
+        phi(fixed=true, start=0.78539816339745),
+        w(fixed=true, start=0.1))
+        annotation (Placement(transformation(extent={{-10,-100},{10,-80}})));
+      MultiBody.Joints.Revolute revolute9(
+        useAxisFlange=true,
+        fixFlange=Modelica.Mechanics.MultiBody.Types.FixFlange.none,
+        fixSupport=true,
+        n={0,0,1},
+        cylinderDiameter=1/15,
+        a(fixed=false),
+        phi(fixed=true, start=0.78539816339745),
+        w(fixed=true, start=0.1))
+        annotation (Placement(transformation(extent={{80,80},{100,100}})));
+      MultiBody.Joints.Revolute revolute10(
+        useAxisFlange=true,
+        fixFlange=Modelica.Mechanics.MultiBody.Types.FixFlange.none,
+        fixSupport=true,
+        n={0,0,1},
+        cylinderDiameter=1/15,
+        a(fixed=false),
+        phi(fixed=true, start=0.78539816339745),
+        w(fixed=true, start=0.1)) annotation (Placement(transformation(extent={{80,20},{100,40}})));
+      MultiBody.Joints.Revolute revolute11(
+        useAxisFlange=true,
+        fixFlange=Modelica.Mechanics.MultiBody.Types.FixFlange.none,
+        fixSupport=true,
+        n={0,0,1},
+        cylinderDiameter=1/15,
+        a(fixed=false),
+        phi(fixed=true, start=0.78539816339745),
+        w(fixed=true, start=0.1))
+        annotation (Placement(transformation(extent={{80,-50},{100,-30}})));
+      MultiBody.Joints.Revolute revolute12(
+        useAxisFlange=true,
+        fixFlange=Modelica.Mechanics.MultiBody.Types.FixFlange.none,
+        fixSupport=true,
+        n={0,0,1},
+        cylinderDiameter=1/15,
+        a(fixed=false),
+        phi(fixed=true, start=0.78539816339745),
+        w(fixed=true, start=0.1))
+        annotation (Placement(transformation(extent={{80,-100},{100,-80}})));
+      MultiBody.Parts.Body body1(
+        animation=false,
+        r_CM={0,0,0},
+        m=1,
+        I_33=1) annotation (Placement(transformation(extent={{-70,80},{-50,100}})));
+      MultiBody.Parts.Body body2(
+        animation=false,
+        r_CM={0,0,0},
+        m=1,
+        I_33=1)
+             annotation (Placement(transformation(extent={{-70,20},{-50,40}})));
+      MultiBody.Parts.Body body3(
+        animation=false,
+        r_CM={0,0,0},
+        m=1,
+        I_33=1)
+             annotation (Placement(transformation(extent={{-70,-50},{-50,-30}})));
+      MultiBody.Parts.Body body4(
+        animation=false,
+        r_CM={0,0,0},
+        m=1,
+        I_33=1)
+             annotation (Placement(transformation(extent={{-70,-100},{-50,-80}})));
+      MultiBody.Parts.Body body5(
+        animation=false,
+        r_CM={0,0,0},
+        m=1,
+        I_33=1)
+             annotation (Placement(transformation(extent={{20,80},{40,100}})));
+      MultiBody.Parts.Body body6(
+        animation=false,
+        r_CM={0,0,0},
+        m=1,
+        I_33=1)
+             annotation (Placement(transformation(extent={{20,20},{40,40}})));
+      MultiBody.Parts.Body body7(
+        animation=false,
+        r_CM={0,0,0},
+        m=1,
+        I_33=1)
+             annotation (Placement(transformation(extent={{20,-50},{40,-30}})));
+      MultiBody.Parts.Body body8(
+        animation=false,
+        r_CM={0,0,0},
+        m=1,
+        I_33=1)
+             annotation (Placement(transformation(extent={{20,-100},{40,-80}})));
+      MultiBody.Parts.Body body9(
+        animation=false,
+        r_CM={0,0,0},
+        m=1,
+        I_33=1)
+             annotation (Placement(transformation(extent={{110,80},{130,100}})));
+      MultiBody.Parts.Body body10(
+        animation=false,
+        r_CM={0,0,0},
+        m=1,
+        I_33=1) annotation (Placement(transformation(extent={{110,20},{130,40}})));
+      MultiBody.Parts.Body body11(
+        animation=false,
+        r_CM={0,0,0},
+        m=1,
+        I_33=1)
+             annotation (Placement(transformation(extent={{110,-50},{130,-30}})));
+      MultiBody.Parts.Body body12(
+        animation=false,
+        r_CM={0,0,0},
+        m=1,
+        I_33=1)
+             annotation (Placement(transformation(extent={{110,-100},{130,-80}})));
+      Modelica.Mechanics.Rotational.Sources.ConstantTorque torque_a2(tau_constant=3) annotation (Placement(transformation(extent={{-60,46},{-80,66}})));
+      Modelica.Mechanics.Rotational.Sources.ConstantTorque torque_a3(tau_constant=torque_a2.tau_constant) annotation (Placement(transformation(extent={{-60,-24},{-80,-4}})));
+      Modelica.Mechanics.Rotational.Sources.ConstantTorque torque_b3(tau_constant=-2) annotation (Placement(transformation(extent={{-120,-24},{-100,-4}})));
+      Modelica.Mechanics.Rotational.Sources.ConstantTorque torque_b4(tau_constant=torque_b3.tau_constant) annotation (Placement(transformation(extent={{-120,-80},{-100,-60}})));
+      Modelica.Mechanics.Rotational.Sources.ConstantTorque torque_a6(tau_constant=torque_a2.tau_constant)
+                                                                                     annotation (Placement(transformation(extent={{30,46},{10,66}})));
+      Modelica.Mechanics.Rotational.Sources.ConstantTorque torque_a7(tau_constant=torque_a2.tau_constant) annotation (Placement(transformation(extent={{30,-24},{10,-4}})));
+      Modelica.Mechanics.Rotational.Sources.ConstantTorque torque_b7(tau_constant=torque_b3.tau_constant)
+                                                                                      annotation (Placement(transformation(extent={{-30,-24},{-10,-4}})));
+      Modelica.Mechanics.Rotational.Sources.ConstantTorque torque_b8(tau_constant=torque_b3.tau_constant) annotation (Placement(transformation(extent={{-30,-80},{-10,-60}})));
+      Modelica.Mechanics.Rotational.Sources.ConstantTorque torque_a10(tau_constant=torque_a2.tau_constant) annotation (Placement(transformation(extent={{120,46},{100,66}})));
+      Modelica.Mechanics.Rotational.Sources.ConstantTorque torque_a11(tau_constant=torque_a2.tau_constant) annotation (Placement(transformation(extent={{120,-24},{100,-4}})));
+      Modelica.Mechanics.Rotational.Sources.ConstantTorque torque_b11(tau_constant=torque_b3.tau_constant) annotation (Placement(transformation(extent={{60,-24},{80,-4}})));
+      Modelica.Mechanics.Rotational.Sources.ConstantTorque torque_b12(tau_constant=torque_b3.tau_constant) annotation (Placement(transformation(extent={{60,-80},{80,-60}})));
+      Modelica.Mechanics.Rotational.Components.Fixed fixed annotation (Placement(transformation(
+            extent={{-10,-10},{10,10}},
+            rotation=90,
+            origin={150,0})));
+    equation
+      connect(world.frame_b, revolute1.frame_a) annotation (Line(
+          points={{-140,-110},{-130,-110},{-130,90},{-100,90}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(revolute1.frame_b, body1.frame_a) annotation (Line(
+          points={{-80,90},{-70,90}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(world.frame_b,revolute2. frame_a) annotation (Line(
+          points={{-140,-110},{-130,-110},{-130,30},{-100,30}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(revolute2.frame_b,body2. frame_a) annotation (Line(
+          points={{-80,30},{-70,30}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(torque_a2.flange,revolute2. axis) annotation (Line(points={{-80,56},{-90,56},{-90,40}},
+                                                                                                 color={0,0,0}));
+      connect(world.frame_b,revolute3. frame_a) annotation (Line(
+          points={{-140,-110},{-130,-110},{-130,-40},{-100,-40}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(revolute3.frame_b,body3. frame_a) annotation (Line(
+          points={{-80,-40},{-70,-40}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(torque_a3.flange,revolute3. axis) annotation (Line(points={{-80,-14},{-90,-14},{-90,-30}},
+                                                                                                    color={0,0,0}));
+      connect(torque_b3.flange,revolute3. support) annotation (Line(points={{-100,-14},{-96,-14},{-96,-30}},
+                                                                                                          color={0,0,0}));
+      connect(world.frame_b,revolute4. frame_a) annotation (Line(
+          points={{-140,-110},{-130,-110},{-130,-90},{-100,-90}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(revolute4.frame_b,body4. frame_a) annotation (Line(
+          points={{-80,-90},{-70,-90}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(torque_b4.flange,revolute4. support) annotation (Line(points={{-100,-70},{-96,-70},{-96,-80}},
+                                                                                                          color={0,0,0}));
+      connect(world.frame_b,revolute5. frame_a) annotation (Line(
+          points={{-140,-110},{-38,-110},{-38,90},{-10,90}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(revolute5.frame_b,body5. frame_a) annotation (Line(
+          points={{10,90},{20,90}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(world.frame_b,revolute6. frame_a) annotation (Line(
+          points={{-140,-110},{-38,-110},{-38,30},{-10,30}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(revolute6.frame_b,body6. frame_a) annotation (Line(
+          points={{10,30},{20,30}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(torque_a6.flange,revolute6. axis) annotation (Line(points={{10,56},{0,56},{0,40}}, color={0,0,0}));
+      connect(world.frame_b,revolute7. frame_a) annotation (Line(
+          points={{-140,-110},{-38,-110},{-38,-40},{-10,-40}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(revolute7.frame_b,body7. frame_a) annotation (Line(
+          points={{10,-40},{20,-40}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(torque_a7.flange,revolute7. axis) annotation (Line(points={{10,-14},{0,-14},{0,-30}}, color={0,0,0}));
+      connect(torque_b7.flange,revolute7. support) annotation (Line(points={{-10,-14},{-6,-14},{-6,-30}}, color={0,0,0}));
+      connect(world.frame_b,revolute8. frame_a) annotation (Line(
+          points={{-140,-110},{-38,-110},{-38,-90},{-10,-90}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(revolute8.frame_b,body8. frame_a) annotation (Line(
+          points={{10,-90},{20,-90}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(torque_b8.flange,revolute8. support) annotation (Line(points={{-10,-70},{-6,-70},{-6,-80}}, color={0,0,0}));
+      connect(world.frame_b,revolute9. frame_a) annotation (Line(
+          points={{-140,-110},{52,-110},{52,90},{80,90}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(revolute9.frame_b,body9. frame_a) annotation (Line(
+          points={{100,90},{110,90}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(world.frame_b, revolute10.frame_a) annotation (Line(
+          points={{-140,-110},{52,-110},{52,30},{80,30}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(revolute10.frame_b, body10.frame_a) annotation (Line(
+          points={{100,30},{110,30}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(torque_a10.flange, revolute10.axis) annotation (Line(points={{100,56},{90,56},{90,40}}, color={0,0,0}));
+      connect(world.frame_b,revolute11. frame_a) annotation (Line(
+          points={{-140,-110},{52,-110},{52,-40},{80,-40}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(revolute11.frame_b,body11. frame_a) annotation (Line(
+          points={{100,-40},{110,-40}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(torque_a11.flange, revolute11.axis) annotation (Line(points={{100,-14},{90,-14},{90,-30}}, color={0,0,0}));
+      connect(torque_b11.flange, revolute11.support) annotation (Line(points={{80,-14},{84,-14},{84,-30}}, color={0,0,0}));
+      connect(world.frame_b,revolute12. frame_a) annotation (Line(
+          points={{-140,-110},{52,-110},{52,-90},{80,-90}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(revolute12.frame_b,body12. frame_a) annotation (Line(
+          points={{100,-90},{110,-90}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(torque_b12.flange, revolute12.support) annotation (Line(points={{80,-70},{84,-70},{84,-80}}, color={0,0,0}));
+      connect(fixed.flange, revolute9.axis) annotation (Line(points={{150,0},{140,0},{140,104},{90,104},{90,100}}, color={0,0,0}));
+      connect(fixed.flange, revolute10.axis) annotation (Line(points={{150,0},{140,0},{140,72},{90,72},{90,40}},               color={0,0,0}));
+      connect(fixed.flange, revolute11.axis) annotation (Line(points={{150,0},{140,0},{140,8},{90,8},{90,-30}}, color={0,0,0}));
+      connect(fixed.flange, revolute12.axis) annotation (Line(points={{150,0},{140,0},{140,-70},{90,-70},{90,-80}}, color={0,0,0}));
+      annotation (experiment(StopTime=1.1),
+        Diagram(coordinateSystem(extent={{-160,-120},{160,120}}), graphics={
+            Line(
+              points={{-44,120},{-44,-120}},
+              color={255,128,0},
+              pattern=LinePattern.Dash,
+              thickness=0.5),
+            Text(
+              extent={{-130,118},{-44,108}},
+              textColor={255,128,0},
+              textString="fixFlange = axis"),
+            Text(
+              extent={{-42,118},{44,108}},
+              textColor={255,128,0},
+              textString="fixFlange = by3DRoot"),
+            Text(
+              extent={{48,118},{128,108}},
+              textColor={255,128,0},
+              textString="fixFlange = none"),
+            Line(
+              points={{46,120},{46,-120}},
+              color={255,128,0},
+              pattern=LinePattern.Dash,
+              thickness=0.5)}),
+        Icon(coordinateSystem(extent={{-100,-100},{100,100}})));
+    end RevoluteFixAxis;
 
     model RevoluteSupport
       extends Modelica.Icons.Example;
 
       inner MultiBody.World world(animateWorld=false,
           animateGravity=false) annotation (Placement(transformation(extent={{-100,-10},{-80,10}})));
-      AdvancedMechanics.Multibody.Joints.RevoluteTorques revolute2(
+      MultiBody.Joints.Revolute                          revolute2(
         useAxisFlange=true,
+        fixFlange=Modelica.Mechanics.MultiBody.Types.FixFlange.support,
         n={0,0,1},
         cylinderDiameter=1/15,
         a(fixed=false),
@@ -4682,8 +5288,8 @@ and plot gasForce.press over gasForce.s_rel.
           points={{10,-30},{40,-30}},
           color={95,95,95},
           thickness=0.5));
-      connect(damper.flange_a, revolute2.support) annotation (Line(points={{-10,0},{-10,-20},{-4,-20}}, color={0,0,0}));
-      connect(damper.flange_b, revolute2.axis) annotation (Line(points={{10,0},{10,-20},{4,-20}}, color={0,0,0}));
+      connect(damper.flange_a, revolute2.support) annotation (Line(points={{-10,0},{-10,-20},{-6,-20}}, color={0,0,0}));
+      connect(damper.flange_b, revolute2.axis) annotation (Line(points={{10,0},{10,-20},{0,-20}}, color={0,0,0}));
       annotation (experiment(StopTime=1.1));
     end RevoluteSupport;
 
