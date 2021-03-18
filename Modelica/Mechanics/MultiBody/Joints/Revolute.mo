@@ -18,6 +18,9 @@ model Revolute
 
   parameter Boolean useAxisFlange=false "= true, if axis flange is enabled"
     annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Modelica.Mechanics.MultiBody.Types.FixFlange fixFlange=Modelica.Mechanics.MultiBody.Types.FixFlange.support "Which flange shall be fixed" annotation (
+    Evaluate=true,
+    HideResult=true);
   parameter Boolean fixSupport=false "= true, if support flange is fixed to ground"
     annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean animation=true
@@ -105,28 +108,41 @@ equation
     R_rel = Frames.planarRotation(e, phi, w);
     frame_b.R = Frames.absoluteRotation(frame_a.R, R_rel);
     frame_a.f = -Frames.resolve1(R_rel, frame_b.f);
-    if fixSupport then
+//     if fixSupport then
       frame_a.t = -Frames.resolve1(R_rel, frame_b.t);
-    else
-      frame_a.t + tau_support*e = -Frames.resolve1(R_rel, frame_b.t + tau*e);
-    end if;
+//     else
+//       frame_a.t + tau_support*e = -Frames.resolve1(R_rel, frame_b.t + tau*e);
+//     end if;
   else
     R_rel = Frames.planarRotation(-e, phi, w);
     frame_a.R = Frames.absoluteRotation(frame_b.R, R_rel);
     frame_b.f = -Frames.resolve1(R_rel, frame_a.f);
-    if fixSupport then
+//     if fixSupport then
       frame_b.t = -Frames.resolve1(R_rel, frame_a.t);
-    else
-      frame_b.t + tau*e = -Frames.resolve1(R_rel, frame_a.t + tau_support*e);
-    end if;
+//     else
+//       frame_b.t + tau*e = -Frames.resolve1(R_rel, frame_a.t + tau_support*e);
+//     end if;
   end if;
 
   // d'Alemberts principle
-  tau = -frame_b.t*e;
-  if fixSupport or not useAxisFlange then
-    internalSupport.phi = 0;
-  else
+  if fixFlange == Modelica.Mechanics.MultiBody.Types.FixFlange.axis then
     tau_support = -frame_a.t*e;
+    internalAxis.phi = 0;
+  elseif fixFlange == Modelica.Mechanics.MultiBody.Types.FixFlange.none then
+    tau = -frame_b.t*e;
+    tau_support = -frame_a.t*e;
+  elseif fixFlange == Modelica.Mechanics.MultiBody.Types.FixFlange.by3DRoot then
+    if Connections.rooted(frame_b.R) then
+      tau_support = -frame_a.t*e;
+      internalAxis.phi = 0;
+    else
+      tau = -frame_b.t*e;
+      internalSupport.phi = 0;
+    end if;
+  else
+    // fixFlange == Modelica.Mechanics.MultiBody.Types.FixFrame.support
+    tau = -frame_b.t*e;
+    internalSupport.phi = 0;
   end if;
 
   // Connection to internal connectors
