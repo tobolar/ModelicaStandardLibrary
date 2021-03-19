@@ -5053,25 +5053,25 @@ and plot gasForce.press over gasForce.s_rel.
         r_CM={0,0,0},
         m=1,
         I_33=1)
-             annotation (Placement(transformation(extent={{20,80},{40,100}})));
+             annotation (Placement(transformation(extent={{-20,80},{-40,100}})));
       MultiBody.Parts.Body body6(
         animation=false,
         r_CM={0,0,0},
         m=1,
         I_33=1)
-             annotation (Placement(transformation(extent={{20,20},{40,40}})));
+             annotation (Placement(transformation(extent={{-20,20},{-40,40}})));
       MultiBody.Parts.Body body7(
         animation=false,
         r_CM={0,0,0},
         m=1,
         I_33=1)
-             annotation (Placement(transformation(extent={{20,-50},{40,-30}})));
+             annotation (Placement(transformation(extent={{-20,-50},{-40,-30}})));
       MultiBody.Parts.Body body8(
         animation=false,
         r_CM={0,0,0},
         m=1,
         I_33=1)
-             annotation (Placement(transformation(extent={{20,-100},{40,-80}})));
+             annotation (Placement(transformation(extent={{-20,-100},{-40,-80}})));
       MultiBody.Parts.Body body9(
         animation=false,
         r_CM={0,0,0},
@@ -5122,79 +5122,79 @@ and plot gasForce.press over gasForce.s_rel.
           points={{-80,90},{-70,90}},
           color={95,95,95},
           thickness=0.5));
-      connect(world.frame_b,revolute2. frame_a) annotation (Line(
+      connect(world.frame_b, revolute2.frame_a) annotation (Line(
           points={{-140,-110},{-130,-110},{-130,30},{-100,30}},
           color={95,95,95},
           thickness=0.5));
-      connect(revolute2.frame_b,body2. frame_a) annotation (Line(
+      connect(revolute2.frame_b, body2.frame_a) annotation (Line(
           points={{-80,30},{-70,30}},
           color={95,95,95},
           thickness=0.5));
-      connect(torque_a2.flange,revolute2. axis) annotation (Line(points={{-80,56},{-90,56},{-90,40}},
+      connect(torque_a2.flange, revolute2.axis) annotation (Line(points={{-80,56},{-90,56},{-90,40}},
                                                                                                  color={0,0,0}));
-      connect(world.frame_b,revolute3. frame_a) annotation (Line(
+      connect(world.frame_b, revolute3.frame_a) annotation (Line(
           points={{-140,-110},{-130,-110},{-130,-40},{-100,-40}},
           color={95,95,95},
           thickness=0.5));
-      connect(revolute3.frame_b,body3. frame_a) annotation (Line(
+      connect(revolute3.frame_b, body3.frame_a) annotation (Line(
           points={{-80,-40},{-70,-40}},
           color={95,95,95},
           thickness=0.5));
-      connect(torque_a3.flange,revolute3. axis) annotation (Line(points={{-80,-14},{-90,-14},{-90,-30}},
+      connect(torque_a3.flange, revolute3.axis) annotation (Line(points={{-80,-14},{-90,-14},{-90,-30}},
                                                                                                     color={0,0,0}));
-      connect(torque_b3.flange,revolute3. support) annotation (Line(points={{-100,-14},{-96,-14},{-96,-30}},
+      connect(torque_b3.flange, revolute3.support) annotation (Line(points={{-100,-14},{-96,-14},{-96,-30}},
                                                                                                           color={0,0,0}));
-      connect(world.frame_b,revolute4. frame_a) annotation (Line(
+      connect(world.frame_b, revolute4.frame_a) annotation (Line(
           points={{-140,-110},{-130,-110},{-130,-90},{-100,-90}},
           color={95,95,95},
           thickness=0.5));
-      connect(revolute4.frame_b,body4. frame_a) annotation (Line(
+      connect(revolute4.frame_b, body4.frame_a) annotation (Line(
           points={{-80,-90},{-70,-90}},
           color={95,95,95},
           thickness=0.5));
-      connect(torque_b4.flange,revolute4. support) annotation (Line(points={{-100,-70},{-96,-70},{-96,-80}},
+      connect(torque_b4.flange, revolute4.support) annotation (Line(points={{-100,-70},{-96,-70},{-96,-80}},
                                                                                                           color={0,0,0}));
-      connect(world.frame_b,revolute5. frame_a) annotation (Line(
-          points={{-140,-110},{-38,-110},{-38,90},{-10,90}},
+      connect(world.frame_b, revolute5.frame_b) annotation (Line(
+          points={{-140,-110},{52,-110},{52,90},{10,90}},
           color={95,95,95},
           thickness=0.5));
-      connect(revolute5.frame_b,body5. frame_a) annotation (Line(
-          points={{10,90},{20,90}},
+      connect(revolute5.frame_a, body5.frame_a) annotation (Line(
+          points={{-10,90},{-20,90}},
           color={95,95,95},
           thickness=0.5));
-      connect(world.frame_b,revolute6. frame_a) annotation (Line(
-          points={{-140,-110},{-38,-110},{-38,30},{-10,30}},
+      connect(world.frame_b, revolute6.frame_b) annotation (Line(
+          points={{-140,-110},{52,-110},{52,30},{10,30}},
           color={95,95,95},
           thickness=0.5));
-      connect(revolute6.frame_b,body6. frame_a) annotation (Line(
-          points={{10,30},{20,30}},
+      connect(revolute6.frame_a, body6.frame_a) annotation (Line(
+          points={{-10,30},{-20,30}},
           color={95,95,95},
           thickness=0.5));
-      connect(torque_a6.flange,revolute6. axis) annotation (Line(points={{10,56},{0,56},{0,40}}, color={0,0,0}));
-      connect(world.frame_b,revolute7. frame_a) annotation (Line(
-          points={{-140,-110},{-38,-110},{-38,-40},{-10,-40}},
+      connect(torque_a6.flange, revolute6.axis) annotation (Line(points={{10,56},{0,56},{0,40}}, color={0,0,0}));
+      connect(world.frame_b, revolute7.frame_b) annotation (Line(
+          points={{-140,-110},{52,-110},{52,-40},{10,-40}},
           color={95,95,95},
           thickness=0.5));
-      connect(revolute7.frame_b,body7. frame_a) annotation (Line(
-          points={{10,-40},{20,-40}},
+      connect(revolute7.frame_a, body7.frame_a) annotation (Line(
+          points={{-10,-40},{-20,-40}},
           color={95,95,95},
           thickness=0.5));
-      connect(torque_a7.flange,revolute7. axis) annotation (Line(points={{10,-14},{0,-14},{0,-30}}, color={0,0,0}));
-      connect(torque_b7.flange,revolute7. support) annotation (Line(points={{-10,-14},{-6,-14},{-6,-30}}, color={0,0,0}));
-      connect(world.frame_b,revolute8. frame_a) annotation (Line(
-          points={{-140,-110},{-38,-110},{-38,-90},{-10,-90}},
+      connect(torque_a7.flange, revolute7.axis) annotation (Line(points={{10,-14},{0,-14},{0,-30}}, color={0,0,0}));
+      connect(torque_b7.flange, revolute7.support) annotation (Line(points={{-10,-14},{-6,-14},{-6,-30}}, color={0,0,0}));
+      connect(world.frame_b, revolute8.frame_b) annotation (Line(
+          points={{-140,-110},{52,-110},{52,-90},{10,-90}},
           color={95,95,95},
           thickness=0.5));
-      connect(revolute8.frame_b,body8. frame_a) annotation (Line(
-          points={{10,-90},{20,-90}},
+      connect(revolute8.frame_a, body8.frame_a) annotation (Line(
+          points={{-10,-90},{-20,-90}},
           color={95,95,95},
           thickness=0.5));
-      connect(torque_b8.flange,revolute8. support) annotation (Line(points={{-10,-70},{-6,-70},{-6,-80}}, color={0,0,0}));
-      connect(world.frame_b,revolute9. frame_a) annotation (Line(
+      connect(torque_b8.flange, revolute8.support) annotation (Line(points={{-10,-70},{-6,-70},{-6,-80}}, color={0,0,0}));
+      connect(world.frame_b, revolute9.frame_a) annotation (Line(
           points={{-140,-110},{52,-110},{52,90},{80,90}},
           color={95,95,95},
           thickness=0.5));
-      connect(revolute9.frame_b,body9. frame_a) annotation (Line(
+      connect(revolute9.frame_b, body9.frame_a) annotation (Line(
           points={{100,90},{110,90}},
           color={95,95,95},
           thickness=0.5));
@@ -5207,21 +5207,21 @@ and plot gasForce.press over gasForce.s_rel.
           color={95,95,95},
           thickness=0.5));
       connect(torque_a10.flange, revolute10.axis) annotation (Line(points={{100,56},{90,56},{90,40}}, color={0,0,0}));
-      connect(world.frame_b,revolute11. frame_a) annotation (Line(
+      connect(world.frame_b, revolute11.frame_a) annotation (Line(
           points={{-140,-110},{52,-110},{52,-40},{80,-40}},
           color={95,95,95},
           thickness=0.5));
-      connect(revolute11.frame_b,body11. frame_a) annotation (Line(
+      connect(revolute11.frame_b, body11.frame_a) annotation (Line(
           points={{100,-40},{110,-40}},
           color={95,95,95},
           thickness=0.5));
       connect(torque_a11.flange, revolute11.axis) annotation (Line(points={{100,-14},{90,-14},{90,-30}}, color={0,0,0}));
       connect(torque_b11.flange, revolute11.support) annotation (Line(points={{80,-14},{84,-14},{84,-30}}, color={0,0,0}));
-      connect(world.frame_b,revolute12. frame_a) annotation (Line(
+      connect(world.frame_b, revolute12.frame_a) annotation (Line(
           points={{-140,-110},{52,-110},{52,-90},{80,-90}},
           color={95,95,95},
           thickness=0.5));
-      connect(revolute12.frame_b,body12. frame_a) annotation (Line(
+      connect(revolute12.frame_b, body12.frame_a) annotation (Line(
           points={{100,-90},{110,-90}},
           color={95,95,95},
           thickness=0.5));
