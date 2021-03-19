@@ -4,7 +4,7 @@ model Revolute
 
   Modelica.Mechanics.Rotational.Interfaces.Flange_a axis if useAxisFlange
     "1-dim. rotational flange that drives the joint"
-    annotation (Placement(transformation(extent={{10,90},{-10,110}})));
+    annotation (Placement(transformation(extent={{70,90},{50,110}})));
   Modelica.Mechanics.Rotational.Interfaces.Flange_b support if useAxisFlange
     "1-dim. rotational flange of the drive support (assumed to be fixed in the world frame, NOT in the joint)"
     annotation (Placement(transformation(extent={{-70,90},{-50,110}})));
@@ -18,7 +18,8 @@ model Revolute
 
   parameter Boolean useAxisFlange=false "= true, if axis flange is enabled"
     annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Modelica.Mechanics.MultiBody.Types.FixFlange fixFlange=Modelica.Mechanics.MultiBody.Types.FixFlange.support "Which flange shall be fixed" annotation (
+  parameter Modelica.Mechanics.MultiBody.Types.FixFlange fixFlange=Modelica.Mechanics.MultiBody.Types.FixFlange.support
+    "Which flange shall be fixed" annotation (
     Evaluate=true,
     HideResult=true);
   parameter Boolean animation=true
@@ -81,9 +82,9 @@ protected
     R=frame_a.R) if world.enableAnimation and animation;
 
   Rotational.Interfaces.InternalSupport internalAxis(tau=tau)
-    annotation (Placement(transformation(extent={{-10,90},{10,70}})));
+    annotation (Placement(transformation(extent={{50,90},{70,70}})));
   Rotational.Sources.ConstantTorque constantTorque(tau_constant=0) if not useAxisFlange
-    annotation (Placement(transformation(extent={{40,70},{20,90}})));
+    annotation (Placement(transformation(extent={{100,70},{80,90}})));
   Rotational.Interfaces.InternalSupport internalSupport(tau=tau_support) annotation (Placement(transformation(extent={{-70,90},{-50,70}})));
   Rotational.Sources.ConstantTorque zeroTorqueSupport(tau_constant=0) if
     not useAxisFlange annotation (Placement(transformation(extent={{-20,70},{-40,90}})));
@@ -139,15 +140,20 @@ equation
   phi = internalAxis.phi - internalSupport.phi;
 
   connect(internalAxis.flange, axis) annotation (Line(
-      points={{0,80},{0,100}}));
+      points={{60,80},{60,100}}));
   connect(constantTorque.flange, internalAxis.flange) annotation (Line(
-      points={{20,80},{0,80}}));
+      points={{80,80},{60,80}}));
   connect(support, internalSupport.flange) annotation (Line(points={{-60,100},{-60,80}}, color={0,0,0}));
   connect(zeroTorqueSupport.flange, internalSupport.flange) annotation (Line(points={{-40,80},{-60,80}}, color={0,0,0}));
   annotation (
     Icon(coordinateSystem(
         preserveAspectRatio=true,
         extent={{-100,-100},{100,100}}), graphics={
+        Rectangle(
+          extent={{-32,10},{60,-10}},
+          lineColor={64,64,64},
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid),
         Rectangle(
           extent={{-100,-60},{-30,60}},
           lineColor={64,64,64},
@@ -162,42 +168,114 @@ equation
           radius=10),
         Rectangle(extent={{-100,60},{-30,-60}}, lineColor={64,64,64}, radius=10),
         Rectangle(extent={{30,60},{100,-60}}, lineColor={64,64,64}, radius=10),
-        Text(
-          extent={{-90,14},{-54,-11}},
-          textColor={128,128,128},
-          textString="a"),
-        Text(
-          extent={{51,11},{87,-14}},
-          textColor={128,128,128},
-          textString="b"),
         Line(
-          visible=useAxisFlange,
-          points={{-20,80},{-20,60}}),
+          visible=useAxisFlange and fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.support,
+          points={{-90,100},{-30,100}}),
         Line(
-          visible=useAxisFlange,
-          points={{20,80},{20,60}}),
-        Rectangle(
-          visible=useAxisFlange,
-          extent={{-10,100},{10,50}},
-          fillPattern=FillPattern.VerticalCylinder,
-          fillColor={192,192,192}),
-        Polygon(
-          visible=useAxisFlange,
-          points={{-10,30},{10,30},{30,50},{-30,50},{-10,30}},
-          lineColor={64,64,64},
-          fillColor={192,192,192},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-30,11},{30,-10}},
-          lineColor={64,64,64},
-          fillColor={192,192,192},
-          fillPattern=FillPattern.Solid),
-        Polygon(
-          visible=useAxisFlange,
-          points={{10,30},{30,50},{30,-50},{10,-30},{10,30}},
-          lineColor={64,64,64},
-          fillColor={192,192,192},
-          fillPattern=FillPattern.Solid),
+          visible=useAxisFlange and fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.support,
+          points={{-30,100},{-50,80}}),
+        Line(
+          visible=useAxisFlange and fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.support,
+          points={{-49,100},{-70,80}}),
+        Line(
+          visible=useAxisFlange and fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.support,
+          points={{-70,100},{-90,80}}),
+        Line(
+          visible=useAxisFlange and fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.axis,
+          points={{90,100},{70,80}}),
+        Line(
+          visible=useAxisFlange and fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.axis,
+          points={{71,100},{50,80}}),
+        Line(
+          visible=useAxisFlange and fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.axis,
+          points={{50,100},{30,80}}),
+        Line(
+          visible=useAxisFlange and fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.axis,
+          points={{30,100},{90,100}}),
+        Line(
+          visible=useAxisFlange and not fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.support,
+          points={{-60,100},{-60,20}}, color={64,64,64}),
+        Line(
+          visible=useAxisFlange and not fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.support,
+          points={{-36,28},{-54,10}}, color={64,64,64}),
+        Line(
+          visible=useAxisFlange and not fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.support,
+          points={{-44,20},{-76,20}}, color={64,64,64}),
+        Line(
+          visible=useAxisFlange and not fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.support,
+          points={{-84,28},{-66,10}}, color={64,64,64}),
+        Line(
+          visible=useAxisFlange and not fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.support,
+          points={{-88,24},{-70,6}}, color={64,64,64}),
+        Line(
+          visible=useAxisFlange and not fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.support,
+          points={{-88,-24},{-70,-6}}, color={64,64,64}),
+        Line(
+          visible=useAxisFlange and not fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.support,
+          points={{-80,-16},{-80,16}}, color={64,64,64}),
+        Line(
+          visible=useAxisFlange and not fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.support,
+          points={{-80,0},{-100,0}}, color={64,64,64}),
+        Line(
+          visible=useAxisFlange and not fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.axis,
+          points={{60,100},{60,20}}, color={64,64,64}),
+        Line(
+          visible=useAxisFlange and not fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.axis,
+          points={{76,20},{44,20}}, color={64,64,64}),
+        Line(
+          visible=useAxisFlange and not fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.axis,
+          points={{36,28},{54,10}}, color={64,64,64}),
+        Line(
+          visible=useAxisFlange and not fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.axis,
+          points={{84,28},{66,10}}, color={64,64,64}),
+        Line(
+          visible=useAxisFlange and not fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.axis,
+          points={{70,6},{88,24}}, color={64,64,64}),
+        Line(
+          visible=useAxisFlange and not fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.axis,
+          points={{80,-16},{80,16}}, color={64,64,64}),
+        Line(
+          visible=useAxisFlange and not fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.axis,
+          points={{70,-6},{88,-24}}, color={64,64,64}),
+        Line(
+          visible=useAxisFlange and not fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.axis,
+          points={{100,0},{80,0}},  color={64,64,64}),
+        Line(
+          visible=useAxisFlange and fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.support,
+          points={{50,70},{-14,70},{-32,52}}),
+        Line(
+          visible=useAxisFlange and fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.support,
+          points={{70,80},{70,64}}),
+        Line(
+          visible=useAxisFlange and fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.support,
+          points={{50,80},{50,64}}),
+        Line(
+          visible=useAxisFlange and fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.axis,
+          points={{-72,80},{-72,64}}),
+        Line(
+          visible=useAxisFlange and fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.axis,
+          points={{-48,70},{14,70},{32,52}}),
+        Line(
+          visible=useAxisFlange and fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.axis,
+          points={{-48,80},{-48,64}}),
+        Line(
+          visible=useAxisFlange and fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.by3DRoot,
+          points={{30,100},{10,80}}, color={175,175,175}),
+        Line(
+          visible=useAxisFlange and fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.by3DRoot,
+          points={{-10,100},{-30,80}}, color={175,175,175}),
+        Line(
+          visible=useAxisFlange and fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.by3DRoot,
+          points={{-30,100},{-50,80}}, color={175,175,175}),
+        Line(
+          visible=useAxisFlange and fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.by3DRoot,
+          points={{-60,100},{-10,100}},color={175,175,175}),
+        Line(
+          visible=useAxisFlange and fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.by3DRoot,
+          points={{50,100},{30,80}}, color={175,175,175}),
+        Line(
+          visible=useAxisFlange and fixFlange==Modelica.Mechanics.MultiBody.Types.FixFlange.by3DRoot,
+          points={{10,100},{60,100}},  color={175,175,175}),
         Text(
           extent={{-150,-110},{150,-80}},
           textString="n=%n"),
@@ -206,24 +284,6 @@ equation
           extent={{-150,-155},{150,-115}},
           textString="%name",
           textColor={0,0,255}),
-        Line(
-          visible=useAxisFlange,
-          points={{-20,70},{-60,70},{-60,60}}),
-        Line(
-          visible=useAxisFlange,
-          points={{20,70},{50,70},{50,60}}),
-        Line(
-          visible=useAxisFlange,
-          points={{-90,100},{-30,100}}),
-        Line(
-          visible=useAxisFlange,
-          points={{-30,100},{-50,80}}),
-        Line(
-          visible=useAxisFlange,
-          points={{-49,100},{-70,80}}),
-        Line(
-          visible=useAxisFlange,
-          points={{-70,100},{-90,80}}),
         Text(
           visible=not useAxisFlange,
           extent={{-150,70},{150,110}},
