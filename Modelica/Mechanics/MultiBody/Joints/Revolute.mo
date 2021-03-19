@@ -21,8 +21,6 @@ model Revolute
   parameter Modelica.Mechanics.MultiBody.Types.FixFlange fixFlange=Modelica.Mechanics.MultiBody.Types.FixFlange.support "Which flange shall be fixed" annotation (
     Evaluate=true,
     HideResult=true);
-  parameter Boolean fixSupport=false "= true, if support flange is fixed to ground"
-    annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean animation=true
     "= true, if animation shall be enabled (show axis as cylinder)";
   parameter Modelica.Mechanics.MultiBody.Types.Axis n={0,0,1}
@@ -108,23 +106,15 @@ equation
     R_rel = Frames.planarRotation(e, phi, w);
     frame_b.R = Frames.absoluteRotation(frame_a.R, R_rel);
     frame_a.f = -Frames.resolve1(R_rel, frame_b.f);
-//     if fixSupport then
-      frame_a.t = -Frames.resolve1(R_rel, frame_b.t);
-//     else
-//       frame_a.t + tau_support*e = -Frames.resolve1(R_rel, frame_b.t + tau*e);
-//     end if;
+    frame_a.t = -Frames.resolve1(R_rel, frame_b.t);
   else
     R_rel = Frames.planarRotation(-e, phi, w);
     frame_a.R = Frames.absoluteRotation(frame_b.R, R_rel);
     frame_b.f = -Frames.resolve1(R_rel, frame_a.f);
-//     if fixSupport then
-      frame_b.t = -Frames.resolve1(R_rel, frame_a.t);
-//     else
-//       frame_b.t + tau*e = -Frames.resolve1(R_rel, frame_a.t + tau_support*e);
-//     end if;
+    frame_b.t = -Frames.resolve1(R_rel, frame_a.t);
   end if;
 
-  // d'Alemberts principle
+  // d'Alemberts principle and kinematics
   if fixFlange == Modelica.Mechanics.MultiBody.Types.FixFlange.axis then
     tau_support = -frame_a.t*e;
     internalAxis.phi = 0;
