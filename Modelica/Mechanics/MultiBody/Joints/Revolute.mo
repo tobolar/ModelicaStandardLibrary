@@ -107,12 +107,20 @@ equation
     R_rel = Frames.planarRotation(e, phi, w);
     frame_b.R = Frames.absoluteRotation(frame_a.R, R_rel);
     frame_a.f = -Frames.resolve1(R_rel, frame_b.f);
-    frame_a.t = -Frames.resolve1(R_rel, frame_b.t);
+    if fixFlange == Modelica.Mechanics.MultiBody.Types.FixFlange.none then
+      frame_a.t + tau_support*e = -Frames.resolve1(R_rel, frame_b.t + tau*e);
+    else
+      frame_a.t = -Frames.resolve1(R_rel, frame_b.t);
+    end if;
   else
     R_rel = Frames.planarRotation(-e, phi, w);
     frame_a.R = Frames.absoluteRotation(frame_b.R, R_rel);
     frame_b.f = -Frames.resolve1(R_rel, frame_a.f);
-    frame_b.t = -Frames.resolve1(R_rel, frame_a.t);
+    if fixFlange == Modelica.Mechanics.MultiBody.Types.FixFlange.none then
+      frame_b.t + tau*e = -Frames.resolve1(R_rel, frame_a.t + tau_support*e);
+    else
+      frame_b.t = -Frames.resolve1(R_rel, frame_a.t);
+    end if;
   end if;
 
   // d'Alemberts principle and kinematics
@@ -137,7 +145,7 @@ equation
   end if;
 
   // Connection to internal connectors
-  phi = internalAxis.phi - internalSupport.phi;
+  phi = internalAxis.phi; // - internalSupport.phi;
 
   connect(internalAxis.flange, axis) annotation (Line(
       points={{60,80},{60,100}}));

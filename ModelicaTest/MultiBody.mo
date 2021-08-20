@@ -5243,15 +5243,14 @@ and plot gasForce.press over gasForce.s_rel.
 
       inner MultiBody.World world(animateWorld=false,
           animateGravity=false) annotation (Placement(transformation(extent={{-100,-10},{-80,10}})));
-      MultiBody.Joints.Revolute                          revolute2(
+      MultiBody.Joints.Revolute revolute(
         useAxisFlange=true,
-        fixFlange=Modelica.Mechanics.MultiBody.Types.FixFlange.support,
+        fixFlange=Modelica.Mechanics.MultiBody.Types.FixFlange.none,
         n={0,0,1},
         cylinderDiameter=1/15,
         a(fixed=false),
         phi(fixed=true, start=0.78539816339745),
-        w(fixed=true, start=0.1))
-                       annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
+        w(fixed=true, start=0.1)) annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
       MultiBody.Parts.Body body2(
         animation=false,
         r_CM={0,0,0},
@@ -5259,20 +5258,65 @@ and plot gasForce.press over gasForce.s_rel.
         I_33=1)
              annotation (Placement(transformation(extent={{40,-40},{60,-20}})));
       Modelica.Mechanics.Rotational.Components.Damper damper(d=2)
-                                                             annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
+                                                             annotation (Placement(transformation(extent={{-10,10},{10,30}})));
+      MultiBody.Parts.Mounting1D mounting1D(n=revolute.n) annotation (Placement(transformation(extent={{-60,10},{-40,30}})));
+      Modelica.Mechanics.Rotational.Components.Fixed fixed annotation (Placement(transformation(extent={{-10,0},{10,-20}})));
     equation
-      connect(world.frame_b, revolute2.frame_a) annotation (Line(
+      connect(world.frame_b, revolute.frame_a) annotation (Line(
           points={{-80,0},{-50,0},{-50,-30},{-10,-30}},
           color={95,95,95},
           thickness=0.5));
-      connect(revolute2.frame_b, body2.frame_a) annotation (Line(
+      connect(revolute.frame_b, body2.frame_a) annotation (Line(
           points={{10,-30},{40,-30}},
           color={95,95,95},
           thickness=0.5));
-      connect(damper.flange_a, revolute2.support) annotation (Line(points={{-10,0},{-10,-20},{-6,-20}}, color={0,0,0}));
-      connect(damper.flange_b, revolute2.axis) annotation (Line(points={{10,0},{10,-20},{0,-20}}, color={0,0,0}));
+      connect(damper.flange_b, revolute.axis) annotation (Line(points={{10,20},{20,20},{20,-20},{6,-20}}, color={0,0,0}));
+      connect(mounting1D.flange_b, damper.flange_a) annotation (Line(points={{-40,20},{-10,20}}, color={0,0,0}));
+      connect(mounting1D.frame_a, revolute.frame_a) annotation (Line(
+          points={{-50,10},{-50,-30},{-10,-30}},
+          color={95,95,95},
+          thickness=0.5));
       annotation (experiment(StopTime=1.1));
     end RevoluteSupport;
+
+    model RevoluteSupport2
+      extends Modelica.Icons.Example;
+
+      inner MultiBody.World world(animateWorld=false,
+          animateGravity=false) annotation (Placement(transformation(extent={{-100,-10},{-80,10}})));
+      AdvancedMechanics.Multibody.Joints.RevoluteTorques revoluteTorques(
+        useAxisFlange=true,
+        n={0,0,1},
+        cylinderDiameter=1/15,
+        a(fixed=false),
+        phi(fixed=true, start=0.78539816339745),
+        w(fixed=true, start=0.1)) annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
+      MultiBody.Parts.Body body2(
+        animation=false,
+        r_CM={0,0,0},
+        m=1,
+        I_33=1)
+             annotation (Placement(transformation(extent={{40,-40},{60,-20}})));
+      Modelica.Mechanics.Rotational.Components.Damper damper(d=2)
+                                                             annotation (Placement(transformation(extent={{-10,10},{10,30}})));
+      MultiBody.Parts.Mounting1D mounting1D(n=revoluteTorques.n) annotation (Placement(transformation(extent={{-60,10},{-40,30}})));
+    equation
+      connect(world.frame_b, revoluteTorques.frame_a) annotation (Line(
+          points={{-80,0},{-50,0},{-50,-30},{-10,-30}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(revoluteTorques.frame_b, body2.frame_a) annotation (Line(
+          points={{10,-30},{40,-30}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(damper.flange_b, revoluteTorques.axis) annotation (Line(points={{10,20},{20,20},{20,-20},{4,-20}}, color={0,0,0}));
+      connect(mounting1D.flange_b, damper.flange_a) annotation (Line(points={{-40,20},{-10,20}}, color={0,0,0}));
+      connect(mounting1D.frame_a, revoluteTorques.frame_a) annotation (Line(
+          points={{-50,10},{-50,-30},{-10,-30}},
+          color={95,95,95},
+          thickness=0.5));
+      annotation (experiment(StopTime=1.1));
+    end RevoluteSupport2;
 
     model Prismatic
       extends Modelica.Icons.Example;
