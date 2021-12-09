@@ -144,27 +144,29 @@ definition of the axes vectors n in the revolute joints of the planar loop.
           thickness=0.5)}),
     Documentation(info="<html>
 <p>
-Joint where frame_b rotates around axis n which is fixed in frame_a and
-where this joint is used in a planar loop providing 2 constraint equations
-on position level.
+Joint where <code>frame_b</code> rotates around axis&nbsp;<code>n</code>
+which is fixed in <code>frame_a</code> and
+where this joint is used in a&nbsp;planar loop providing <em>two</em>
+constraint equations on position level.
 </p>
 
 <p>
-If a <strong>planar loop</strong> is present, e.g., consisting of 4 revolute joints
+If a&nbsp;<strong>planar loop</strong> is present, e.g., consisting of
+4&nbsp;revolute joints
 where the joint axes are all parallel to each other, then there is no
 unique mathematical solution if all revolute joints are modelled with
-Joints.Revolute and the symbolic algorithms will
-fail. The reason is that, e.g., the cut-forces in the revolute joints perpendicular
+<a href=\"modelica://Modelica.Mechanics.MultiBody.Joints.Revolute\">Joints.Revolute</a>
+and the symbolic algorithms will fail.
+The reason is that, e.g., the cut-forces in the revolute joints perpendicular
 to the planar loop are not uniquely defined when 3-dim. descriptions of revolute
 joints are used. Usually, an error message will be printed pointing out this
-situation. In this case, <strong>one</strong> revolute joint in the loop has to be replaced by
-model Joints.RevolutePlanarLoopCutJoint. The
-effect is that from the 5 constraints of a 3-dim. revolute joint,
-3 constraints are removed and replaced by appropriate known
+situation. In this case, <em>one</em> revolute joint in the loop has to be
+replaced by this RevolutePlanarLoopConstraint model. The
+effect is that from the 5&nbsp;constraints of a&nbsp;3-dim. revolute joint,
+3&nbsp;constraints are removed and replaced by appropriate known
 variables (e.g., the force in the direction of the axis of rotation is
 treated as known with value equal to zero; for standard revolute joints,
 this force is an unknown quantity).
 </p>
-
 </html>"));
 end RevolutePlanarLoopConstraint;

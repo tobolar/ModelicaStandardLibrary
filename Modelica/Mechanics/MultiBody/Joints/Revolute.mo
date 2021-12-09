@@ -211,56 +211,55 @@ equation
     Documentation(info="<html>
 
 <p>
-Joint where frame_b rotates around axis n which is fixed in frame_a.
-The two frames coincide when the rotation angle \"phi = 0\".
+Joint where <code>frame_b</code> rotates around axis&nbsp;<code>n</code>
+which is fixed in <code>frame_a</code>.
+The two frames coincide when the rotation angle &phi;&nbsp;=&nbsp;0.
 </p>
 
 <p>
-Optionally, two additional 1-dimensional mechanical flanges
-(flange \"axis\" represents the driving flange and
-flange \"support\" represents the bearing) can be enabled via
-parameter <strong>useAxisFlange</strong>. The enabled axis flange can be
+Optionally, two additional one-dimensional mechanical flanges
+(flange <code>axis</code> represents the driving flange and
+flange <code>support</code> represents the bearing) can be enabled via
+parameter <code>useAxisFlange</code>. The enabled axis flange can be
 driven with elements of the
 <a href=\"modelica://Modelica.Mechanics.Rotational\">Modelica.Mechanics.Rotational</a>
 library.
-
 </p>
 
 <p>
-In the \"Advanced\" menu it can be defined via parameter <strong>stateSelect</strong>
-that the rotation angle \"phi\" and its derivative shall be definitely
-used as states by setting stateSelect=StateSelect.always.
+In the \"Advanced\" menu it can be defined via parameter <code>stateSelect</code>
+that the rotation angle&nbsp;&phi; and its derivative shall be definitely
+used as states by setting <code>stateSelect&nbsp;= StateSelect.always</code>.
 Default is StateSelect.prefer to use the joint angle and its
 derivative as preferred states. The states are usually selected automatically.
 In certain situations, especially when closed kinematic loops are present,
 it might be slightly more efficient, when using the StateSelect.always setting.
 </p>
 <p>
-If a <strong>planar loop</strong> is present, e.g., consisting of 4 revolute joints
+If a <strong>planar loop</strong> is present, e.g., consisting of 4&nbsp;revolute joints
 where the joint axes are all parallel to each other, then there is no
-longer a unique mathematical solution and the symbolic algorithms will
+longer a&nbsp;unique mathematical solution and the symbolic algorithms will
 fail. Usually, an error message will be printed pointing out this
-situation. In this case, one revolute joint of the loop has to be replaced
-by a Joints.RevolutePlanarLoopConstraint joint. The
-effect is that from the 5 constraints of a usual revolute joint,
-3 constraints are removed and replaced by appropriate known
+situation. In this case, one revolute joint of the loop has to be replaced by
+a&nbsp;<a href=\"modelica://Modelica.Mechanics.MultiBody.Joints.RevolutePlanarLoopConstraint\">Joints.RevolutePlanarLoopConstraint</a>
+joint. The effect is that from the 5&nbsp;constraints of a&nbsp;usual revolute joint,
+3&nbsp;constraints are removed and replaced by appropriate known
 variables (e.g., the force in the direction of the axis of rotation is
 treated as known with value equal to zero; for standard revolute joints,
 this force is an unknown quantity).
 </p>
 
 <p>
-In the following figure the animation of a revolute
+In the following figure the animation of a&nbsp;revolute
 joint is shown. The light blue coordinate system is
-frame_a and the dark blue coordinate system is
-frame_b of the joint. The black arrow is parameter
-vector \"n\" defining the translation axis
-(here: n = {0,0,1}, phi.start = 45<sup>o</sup>).
+<code>frame_a</code> and the dark blue coordinate system is
+<code>frame_b</code> of the joint. The black arrow is parameter
+vector&nbsp;<code>n</code> defining the rotation axis
+(here: <code>n&nbsp;=&nbsp;{0,0,1}</code>, <code>phi.start&nbsp;= 45&deg;</code>).
 </p>
 
 <div>
-<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Joints/Revolute.png\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Joints/Revolute.png\" alt=\"Animation of a revolute joint\">
 </div>
-
 </html>"));
 end Revolute;

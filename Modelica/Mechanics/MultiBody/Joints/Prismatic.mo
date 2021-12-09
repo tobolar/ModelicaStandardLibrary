@@ -154,25 +154,25 @@ equation
           textColor={0,0,255})}),
     Documentation(info="<html>
 <p>
-Joint where frame_b is translated along axis n which is fixed in frame_a.
-The two frames coincide when the relative distance \"s = 0\".
+Joint where <code>frame_b</code> is translated along axis&nbsp;<code>n</code>
+which is fixed in <code>frame_a</code>.
+The two frames coincide when the relative distance <var>s</var>&nbsp;=&nbsp;0.
 </p>
 
 <p>
-Optionally, two additional 1-dimensional mechanical flanges
-(flange \"axis\" represents the driving flange and
-flange \"support\" represents the bearing) can be enabled via
-parameter <strong>useAxisFlange</strong>. The enabled axis flange can be
+Optionally, two additional one-dimensional mechanical flanges
+(flange <code>axis</code> represents the driving flange and
+flange <code>support</code> represents the bearing) can be enabled via
+parameter <code>useAxisFlange</code>. The enabled axis flange can be
 driven with elements of the
 <a href=\"modelica://Modelica.Mechanics.Translational\">Modelica.Mechanics.Translational</a>
 library.
-
 </p>
 
 <p>
-In the \"Advanced\" menu it can be defined via parameter <strong>stateSelect</strong>
-that the relative distance \"s\" and its derivative shall be definitely
-used as states by setting stateSelect=StateSelect.always.
+In the \"Advanced\" menu it can be defined via parameter <code>stateSelect</code>
+that the relative distance&nbsp;<var>s</var> and its derivative shall be definitely
+used as states by setting <code>stateSelect&nbsp;= StateSelect.always</code>.
 Default is StateSelect.prefer to use the relative distance and its
 derivative as preferred states. The states are usually selected automatically.
 In certain situations, especially when closed kinematic loops are present,
@@ -180,17 +180,16 @@ it might be slightly more efficient, when using the StateSelect.always setting.
 </p>
 
 <p>
-In the following figure the animation of a prismatic
+In the following figure the animation of a&nbsp;prismatic
 joint is shown. The light blue coordinate system is
-frame_a and the dark blue coordinate system is
-frame_b of the joint. The black arrow is parameter
-vector \"n\" defining the translation axis
-(here: n = {1,1,0}).
+<code>frame_a</code> and the dark blue coordinate system is
+<code>frame_b</code> of the joint. The black arrow is parameter
+vector&nbsp;<code>n</code> defining the translation axis
+(here: <code>n&nbsp;=&nbsp;{1,1,0}</code>).
 </p>
 
 <div>
-<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Joints/Prismatic.png\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Joints/Prismatic.png\" alt=\"Animation of a prismatic joint\">
 </div>
-
 </html>"));
 end Prismatic;

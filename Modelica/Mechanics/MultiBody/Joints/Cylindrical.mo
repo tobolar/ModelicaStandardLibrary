@@ -80,39 +80,48 @@ equation
   annotation (
     Documentation(info="<html>
 <p>
-Joint where frame_b rotates around and translates along axis n
-which is fixed in frame_a. The two frames coincide when
-\"phi=revolute.phi=0\" and \"s=prismatic.s=0\". This joint
-has the following potential states;
+Joint where <code>frame_b</code> rotates around and translates along
+axis&nbsp;<code>n</code> which is fixed in <code>frame_a</code>.
+The two frames coincide when <code>phi&nbsp;= revolute.phi&nbsp;=&nbsp;0</code> and
+<code>s&nbsp;= prismatic.s&nbsp;=&nbsp;0</code>.
+This joint has the following potential states:
 </p>
 <ul>
-<li> The relative angle phi [rad] around axis n,</li>
-<li> the relative distance s [m] along axis n,</li>
-<li> the relative angular velocity w [rad/s] (= der(phi))
-     and</li>
-<li> the relative velocity v [m/s] (= der(s)).</li>
+  <li>
+    The relative angle <code>phi</code> [rad] around axis&nbsp;<code>n</code>,
+  </li>
+  <li>
+    the relative distance <code>s</code> [m] along axis&nbsp;<code>n</code>,
+  </li>
+  <li>
+    the relative angular velocity <code>w</code> [rad/s] (= <code>der(phi)</code>) and
+  </li>
+  <li>
+    the relative velocity <code>v</code> [m/s] (= <code>der(s)</code>).
+  </li>
 </ul>
 <p>
 They are used as candidates for automatic selection of states
-from the tool. This may be enforced by setting \"stateSelect=StateSelect.<strong>always</strong>\"
-in the <strong>Advanced</strong> menu. The states are usually selected automatically.
+from the tool. This may be enforced by setting <code>stateSelect&nbsp;= StateSelect.always</code>
+in the \"Advanced\" menu. The states are usually selected automatically.
 In certain situations, especially when closed kinematic loops are present,
-it might be slightly more efficient, when using the \"StateSelect.always\" setting.
+it might be slightly more efficient, when using the StateSelect.always setting.
 </p>
 <p>
-In the following figure the animation of a cylindrical
+In the following figure the animation of a&nbsp;cylindrical
 joint is shown. The light blue coordinate system is
-frame_a and the dark blue coordinate system is
-frame_b of the joint. The black arrow is parameter
-vector \"n\" defining the cylinder axis
-(here: n = {0,0,1}).
+<code>frame_a</code> and the dark blue coordinate system is
+<code>frame_b</code> of the joint. The black arrow is parameter
+vector&nbsp;<code>n</code> defining the cylinder axis
+(here: <code>n&nbsp;=&nbsp;{0,0,1}</code>, <code>s.start&nbsp;=&nbsp;0.4</code>&nbsp;m
+and <code>phi.start&nbsp;= 45&deg;</code>).
 </p>
 
 <div>
-<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Joints/Cylindrical.png\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Joints/Cylindrical.png\" alt=\"Animation of a cylindrical joint\">
 </div>
 </html>"),
-         Icon(coordinateSystem(
+    Icon(coordinateSystem(
         preserveAspectRatio=true,
         extent={{-100,-100},{100,100}}), graphics={
         Rectangle(
