@@ -79,37 +79,53 @@ equation
   annotation (
     Documentation(info="<html>
 <p>
-Joint where frame_a rotates around axis n_a which is fixed in frame_a
-and frame_b rotates around axis n_b which is fixed in frame_b.
-The two frames coincide when
-\"revolute_a.phi=0\" and \"revolute_b.phi=0\". This joint
-has the following potential states;
+Joint where a&nbsp;virtual frame&nbsp;<em>ab</em> rotates around axis <code>n_a</code>
+which is fixed in <code>frame_a</code> and <code>frame_b</code> rotates around
+axis <code>n_b</code> which is fixed in frame&nbsp;<em>ab</em>.
+This joint has the following potential states:
 </p>
 <ul>
-<li> The relative angle phi_a = revolute_a.phi [rad] around axis n_a,</li>
-<li> the relative angle phi_b = revolute_b.phi [rad] around axis n_b,</li>
-<li> the relative angular velocity w_a (= der(phi_a))  and</li>
-<li> the relative angular velocity w_b (= der(phi_b)).</li>
+  <li>
+    The relative angle <code>phi_a&nbsp;= revolute_a.phi</code> [rad] around
+    axis&nbsp;<code>n_a</code>,
+  </li>
+  <li>
+    the relative angle <code>phi_b&nbsp;= revolute_b.phi</code> [rad] around
+    axis&nbsp;<code>n_b</code>,
+  </li>
+  <li>
+    the relative angular velocity <code>w_a</code> [rad/s]
+    (= <code>der(phi_a)</code>) and
+  </li>
+  <li>
+    the relative angular velocity <code>w_b</code> [rad/s]
+    (= <code>der(phi_b)</code>).
+  </li>
 </ul>
 <p>
-They are used as candidates for automatic selection of states
-from the tool. This may be enforced by setting \"stateSelect=StateSelect.<strong>always</strong>\"
-in the <strong>Advanced</strong> menu. The states are usually selected automatically.
-In certain situations, especially when closed kinematic loops are present,
-it might be slightly more efficient, when using the \"StateSelect.always\" setting.
+The two frames <code>frame_a</code> and <code>frame_b</code> coincide when
+both <code>phi_a&nbsp;=&nbsp;0</code> and <code>phi_b&nbsp;=&nbsp;0</code>.
 </p>
 
 <p>
-In the following figure the animation of a universal
+The joint states are used as candidates for automatic selection of states
+from the tool. This may be enforced by setting <code>stateSelect&nbsp;= StateSelect.always</code>
+in the \"Advanced\" menu. The states are usually selected automatically.
+In certain situations, especially when closed kinematic loops are present,
+it might be slightly more efficient, when using the StateSelect.always setting.
+</p>
+
+<p>
+In the following figure the animation of a&nbsp;universal
 joint is shown. The light blue coordinate system is
-frame_a and the dark blue coordinate system is
-frame_b of the joint
-(here: n_a = {0,0,1}, n_b = {0,1,0}, phi_a.start = 90<sup>o</sup>,
-phi_b.start = 45<sup>o</sup>).
+<code>frame_a</code> and the dark blue coordinate system is
+<code>frame_b</code> of the joint, the two red cylinders are joint axes
+(here: <code>n_a&nbsp;= {0,0,1}</code>, <code>n_b&nbsp;= {0,1,0}</code>,
+<code>phi_a.start&nbsp;= 90&deg;</code> and <code>phi_b.start&nbsp;= 45&deg;</code>).
 </p>
 
 <div>
-<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Joints/Universal.png\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Joints/Universal.png\" alt=\"Animation of a universal joint\">
 </div>
 </html>"),
     Icon(coordinateSystem(

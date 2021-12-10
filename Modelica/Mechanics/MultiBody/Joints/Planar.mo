@@ -137,44 +137,67 @@ equation
   annotation (
     Documentation(info="<html>
 <p>
-Joint where frame_b can move in a plane and can rotate around an
-axis orthogonal to the plane. The plane is defined by
-vector n which is perpendicular to the plane and by vector n_x,
-which points in the direction of the x-axis of the plane.
-frame_a and frame_b coincide when s_x=prismatic_x.s=0,
-s_y=prismatic_y.s=0 and phi=revolute.phi=0. This joint has the following
-potential states:
+Joint where <code>frame_b</code> can move in a&nbsp;plane and can
+rotate around an axis orthogonal to the plane. The plane is defined by
+its normal vector&nbsp;<code>n</code> which is perpendicular to the plane
+and by vector&nbsp;<code>n_x</code>, which points in the direction of
+the x-axis of the plane. Both vectors are fixed in <code>frame_a</code>.
+This joint has the following potential states:
 </p>
 <ul>
-<li> the relative distance s_x = prismatic_x.s [m] along axis n_x,</li>
-<li> the relative distance s_y = prismatic_y.s [m] along axis n_y = cross(n,n_x),</li>
-<li> the relative angle phi = revolute.phi [rad] around axis n,</li>
-<li> the relative velocity v_x (= der(s_x)).</li>
-<li> the relative velocity v_y (= der(s_y)).</li>
-<li> the relative angular velocity w (= der(phi))</li>
+  <li>
+    the relative distance <code>s_x&nbsp;= prismatic_x.s</code> [m] along
+    axis&nbsp;<code>n_x</code>,
+  </li>
+  <li>
+    the relative distance <code>s_y&nbsp;= prismatic_y.s</code> [m] along
+    axis&nbsp;<code>n_y&nbsp;= cross(n,&nbsp;n_x)</code>,
+  </li>
+  <li>
+    the relative angle <code>phi&nbsp;= revolute.phi</code> [rad] around
+    axis&nbsp;<code>n</code>,
+  </li>
+  <li>
+    the relative velocity <code>v_x</code> [m/s] (= <code>der(s_x)</code>),
+  </li>
+  <li>
+    the relative velocity <code>v_y</code> [m/s] (= <code>der(s_y)</code>),
+  </li>
+  <li>
+    the relative angular velocity <code>w</code> [rad/s]
+    (= <code>der(phi)</code>)
+  </li>
 </ul>
 <p>
-They are used as candidates for automatic selection of states
-from the tool. This may be enforced by setting \"stateSelect=StateSelect.<strong>always</strong>\"
-in the <strong>Advanced</strong> menu. The states are usually selected automatically.
+The two frames <code>frame_a</code> and <code>frame_b</code> coincide when
+<code>s_x&nbsp;=&nbsp;0</code>, <code>s_y&nbsp;=&nbsp;0</code> and
+<code>phi&nbsp;=&nbsp;0</code>.
+</p>
+
+<p>
+The joint states are used as candidates for automatic selection of states
+from the tool. This may be enforced by setting <code>stateSelect&nbsp;= StateSelect.always</code>
+in the \"Advanced\" menu. The states are usually selected automatically.
 In certain situations, especially when closed kinematic loops are present,
-it might be slightly more efficient, when using the \"StateSelect.always\" setting.
+it might be slightly more efficient, when using the StateSelect.always setting.
 </p>
 <p>
-In the following figure the animation of a planar
+In the following figure the animation of a&nbsp;planar
 joint is shown. The light blue coordinate system is
-frame_a and the dark blue coordinate system is
-frame_b of the joint. The black arrows are parameter
-vectors \"n\" and \"n_x\"
-(here: n = {0,1,0}, n_x = {0,0,1}, s_x.start = 0.5,
-s_y.start = 0.5, phi.start = 45<sup>o</sup>).
+<code>frame_a</code> and the dark blue coordinate system is
+<code>frame_b</code> of the joint. The black arrows are parameter
+vectors&nbsp;<code>n</code> and&nbsp;<code>n_x</code>
+(here: <code>n&nbsp;=&nbsp;{0,1,0}</code>, <code>n_x&nbsp;=&nbsp;{0,0,1}</code>,
+<code>s_x.start&nbsp;=&nbsp;0.5</code>&nbsp;m
+<code>s_y.start&nbsp;=&nbsp;0.5</code>&nbsp;m
+and <code>phi.start&nbsp;= 45&deg;</code>).
 </p>
 
 <div>
-<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Joints/Planar.png\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Joints/Planar.png\" alt=\"Animation of a planar joint\">
 </div>
 </html>"),
-         Icon(coordinateSystem(
+    Icon(coordinateSystem(
         preserveAspectRatio=true,
         extent={{-100,-100},{100,100}}), graphics={
         Rectangle(

@@ -188,51 +188,56 @@ equation
   annotation (
     Documentation(info="<html>
 <p>
-Joint with <strong>3 constraints</strong> that define that the origin of
-frame_a and the origin of frame_b coincide. By default this joint
-defines only the 3 constraints without any potential states.
-If parameter <strong>enforceStates</strong> is set to <strong>true</strong>
-in the \"Advanced\" menu, three states are introduced.
-Depending on parameter <strong>useQuaternions</strong> these are either
-quaternions and the relative angular velocity or 3 angles
-and the angle derivatives. In the latter case the orientation
-of frame_b is computed by rotating frame_a along the axes defined
-in parameter vector \"sequence_angleStates\" (default = {1,2,3}, i.e.,
-the Cardan angle sequence) around the angles used as states.
+Joint with <em>3&nbsp;constraints</em> that define that the <em>origin</em>
+of <code>frame_a</code> and the <em>origin</em> of <code>frame_b</code>
+coincide. By default this joint defines only the 3&nbsp;constraints
+without any potential states.
+If parameter <code>enforceStates</code> is set to true in the
+\"Advanced\" menu, three states are introduced.
+Depending on parameter <code>useQuaternions</code> these are either
+<a href=\"modelica://Modelica.Mechanics.MultiBody.Frames.Quaternions\">quaternions</a>
+and the relative angular velocity or three angles and the angle
+derivatives. In the latter case the orientation of <code>frame_b</code>
+is computed by rotating <code>frame_a</code> sequentially around the axes
+defined in parameter vector <code>sequence_angleStates</code> (default = {1,2,3},
+i.e., the so-called Cardan angle sequence) by the angles used as states.
 For example, the default is to rotate the x-axis of frame_a
-around angles[1], the new y-axis around angles[2] and the new z-axis
-around angles[3], arriving at frame_b. If angles are used
-as states there is the slight disadvantage that
-a singular configuration is present leading to a division by zero.
+by <code>angles[1]</code>, the new y-axis by <code>angles[2]</code> and,
+finally, the new z-axis by <code>angles[3]</code>, thus arriving at
+<code>frame_b</code>. If angles are used as states there is the slight
+disadvantage that a&nbsp;singular configuration is present leading
+to a&nbsp;division by zero.
 </p>
 <p>
-If this joint is used in a <strong>chain</strong> structure, a Modelica translator
-has to select orientation coordinates of a body as states, if the
+If this joint is used in a&nbsp;<em>chain</em> kinematic structure,
+a&nbsp;Modelica translator
+has to select orientation coordinates of a&nbsp;body as states, if the
 default setting is used. It is usually better to use relative coordinates
 in the spherical joint as states, and therefore in this situation
-parameter enforceStates might be set to <strong>true</strong>.
+parameter <code>enforceStates&nbsp;= true</code> might be set.
 </p>
 <p>
-If this joint is used in a <strong>loop</strong> structure, the default
-setting results in a <strong>cut-joint</strong> that
-breaks the loop in independent kinematic pieces, hold together
-by the constraints of this joint. As a result, a Modelica translator
-will first try to select 3 generalized coordinates in the joints of
-the remaining parts of the loop and their first derivative as states
+If this joint is used in a&nbsp;<em>loop</em> kinematic structure,
+the default setting results in a&nbsp;<em>cut-joint</em> that
+breaks the loop in independent kinematic branches, hold together
+by the constraints of this joint. As a&nbsp;result, a&nbsp;Modelica
+translator
+will first try to select three generalized coordinates in the joints of
+the remaining branches of the loop and their first derivative as states,
 and if this is not possible, e.g., because there are only spherical
-joints in the loop, will select coordinates from a body of the loop
-as states.
+joints in the loop, it will select coordinates from a&nbsp;body of
+the loop as states.
 </p>
 <p>
-In the following figure the animation of a spherical
+In the following figure the animation of a&nbsp;spherical
 joint is shown. The light blue coordinate system is
-frame_a and the dark blue coordinate system is
-frame_b of the joint.
-(here: angles_start = {45, 45, 45}<sup>o</sup>).
+<code>frame_a</code> and the dark blue coordinate system is
+<code>frame_b</code> of the joint.
+(here: <code>angles_start&nbsp;= {45&deg;, 45&deg;, 45&deg;}<code>).
 </p>
 
 <div>
-<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Joints/Spherical.png\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Joints/Spherical.png\" alt=\"Animation of a spherical joint\">
 </div>
 </html>"),
     Icon(coordinateSystem(
