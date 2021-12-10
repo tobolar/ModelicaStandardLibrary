@@ -82,26 +82,32 @@ equation
 <p>
 Joint where <code>frame_b</code> rotates around and translates along
 axis&nbsp;<code>n</code> which is fixed in <code>frame_a</code>.
-The two frames coincide when <code>phi&nbsp;= revolute.phi&nbsp;=&nbsp;0</code> and
-<code>s&nbsp;= prismatic.s&nbsp;=&nbsp;0</code>.
 This joint has the following potential states:
 </p>
 <ul>
   <li>
-    The relative angle <code>phi</code> [rad] around axis&nbsp;<code>n</code>,
+    The relative angle <code>phi&nbsp;= revolute.phi</code> [rad] around
+    axis&nbsp;<code>n</code>,
   </li>
   <li>
-    the relative distance <code>s</code> [m] along axis&nbsp;<code>n</code>,
+    the relative distance <code>s&nbsp;= prismatic.s</code> [m] along
+    axis&nbsp;<code>n</code>,
   </li>
   <li>
-    the relative angular velocity <code>w</code> [rad/s] (= <code>der(phi)</code>) and
+    the relative angular velocity <code>w</code> [rad/s]
+    (= <code>der(phi)</code>) and
   </li>
   <li>
     the relative velocity <code>v</code> [m/s] (= <code>der(s)</code>).
   </li>
 </ul>
 <p>
-They are used as candidates for automatic selection of states
+The two frames <code>frame_a</code> and <code>frame_b</code> coincide when
+both <code>phi&nbsp;=&nbsp;0</code> and <code>s&nbsp;=&nbsp;0</code>.
+</p>
+
+<p>
+The joint states are used as candidates for automatic selection of states
 from the tool. This may be enforced by setting <code>stateSelect&nbsp;= StateSelect.always</code>
 in the \"Advanced\" menu. The states are usually selected automatically.
 In certain situations, especially when closed kinematic loops are present,
