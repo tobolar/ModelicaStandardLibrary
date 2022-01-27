@@ -2,7 +2,7 @@ within Modelica.Electrical.Machines.Utilities.ParameterRecords;
 record InductionMachineData "Common parameters for induction machines"
   extends Modelica.Icons.Record;
   import Modelica.Constants.pi;
-  final parameter Integer m=3 "Number of phases" annotation(Evaluate=true);
+  parameter Integer m=3 "Number of phases" annotation(Evaluate=true);
   parameter SI.Inertia Jr=0.29 "Rotor's moment of inertia";
   parameter SI.Inertia Js=Jr "Stator's moment of inertia";
   parameter Integer p(min=1) = 2 "Number of pole pairs (Integer)";
@@ -22,6 +22,9 @@ record InductionMachineData "Common parameters for induction machines"
     annotation (Dialog(tab="Nominal resistances and inductances"));
   parameter SI.Inductance Lssigma=3*(1 - sqrt(1 - 0.0667))/
       (2*pi*fsNominal) "Stator stray inductance per phase"
+    annotation (Dialog(tab="Nominal resistances and inductances"));
+  parameter Real ratioCommonStatorLeakage(final min=0, final max=1)=1
+    "Ratio of common stray inductance / total stray inductance of stator winding"
     annotation (Dialog(tab="Nominal resistances and inductances"));
   parameter Machines.Losses.FrictionParameters frictionParameters(PRef=0, wRef=
         2*pi*fsNominal/p) "Friction loss parameter record"

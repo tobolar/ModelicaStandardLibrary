@@ -4071,7 +4071,7 @@ Ordinary Water Substance<br>
              + "of validity of the IF97 formulation: p = " + String(p) +
             " Pa, Tc = " + String(Tc) + " K");
         end if;
-        if industrialMethod == true then
+        if industrialMethod then
           deltaTREL := abs(TREL - 1) + C[4];
           Q := 2 + C[5]/deltaTREL^(3/5);
           if TREL >= 1 then
@@ -6003,7 +6003,7 @@ region 5 is also covered by a <span class=\"nobr\"><em>g</em>( <em>p</em>,<em>T<
 equations</em>.
 </p>
 <table border=\"0\" cellspacing=\"0\" cellpadding=\"2\">
-  <caption align=\"bottom\">Figure 1: Regions and equations of IAPWS-IF97</caption>
+  <caption>Figure 1: Regions and equations of IAPWS-IF97</caption>
   <tr>
     <td>
     <img src=\"modelica://Modelica/Resources/Images/Media/Water/if97.png\" alt=\"Regions and equations of IAPWS-IF97\">

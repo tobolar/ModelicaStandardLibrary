@@ -18,7 +18,7 @@ the voltage drops across the resistor, the inductor and the capacitor should be 
            alt=\"resonance_circuit.png\">
     </td>
   </tr>
-  <caption align=\"bottom\">Fig. 1: Series AC circuit of a resistor and an inductor at variable frequency</caption>
+  <caption>Fig. 1: Series AC circuit of a resistor and an inductor at variable frequency</caption>
 </table>
 
 <p>
@@ -29,8 +29,7 @@ The voltage drop across the resistor
 <img
  border=\"0\"
  src=\"modelica://Modelica/Resources/Images/Electrical/QuasiStatic/UsersGuide/Overview/ACCircuit/img1.png\"
- alt=\"
-\\underline{v}_{r}=R\\underline{i}\">
+ alt=\"\\underline{v}_{r}=R\\underline{i}\">
 </div>
 
 <p>
@@ -41,8 +40,7 @@ and the inductor
 <img
  border=\"0\"
  src=\"modelica://Modelica/Resources/Images/Electrical/QuasiStatic/UsersGuide/Overview/ACCircuit/img2.png\"
- alt=\"
-\\underline{v}_{l}=j\\omega L\\underline{i}\">
+ alt=\"\\underline{v}_{l}=j\\omega L\\underline{i}\">
 </div>
 
 <p>
@@ -53,8 +51,7 @@ and the capacitor
 <img
  border=\"0\"
  src=\"modelica://Modelica/Resources/Images/Electrical/QuasiStatic/UsersGuide/Overview/ACCircuit/img3.png\"
- alt=\"
-\\underline{v}_{l}=j\\omega L\\underline{i}\">
+ alt=\"\\underline{v}_{l}=j\\omega L\\underline{i}\">
 </div>
 
 <p>
@@ -65,8 +62,7 @@ add up to the total voltage
 <img
  border=\"0\"
  src=\"modelica://Modelica/Resources/Images/Electrical/QuasiStatic/UsersGuide/Overview/ACCircuit/img4.png\"
- alt=\"
-\\underline{v}=\\underline{v}_{r}+\\underline{v}_{l}\">
+ alt=\"\\underline{v}=\\underline{v}_{r}+\\underline{v}_{l}\">
 </div>
 
 <p>
@@ -80,7 +76,7 @@ as illustrated in the phasor diagram of Fig. 2.
            alt=\"phasor_diagram.png\">
     </td>
   </tr>
-  <caption align=\"bottom\">Fig. 2: Phasor diagram of a resistor and inductance series connection</caption>
+  <caption>Fig. 2: Phasor diagram of a resistor and inductance series connection</caption>
 </table>
 
 <p>Due to the series connection of the resistor, inductor and capacitor, the three currents are all equal:</p>
