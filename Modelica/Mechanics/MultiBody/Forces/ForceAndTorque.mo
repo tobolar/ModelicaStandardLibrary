@@ -25,7 +25,8 @@ model ForceAndTorque
     annotation (Placement(transformation(
         origin={80,100},
         extent={{-16,-16},{16,16}},
-        rotation=90)));
+        rotation=90)),
+      mustBeConnected="An enabled frame_resolve connector should be connected");
 
   parameter Boolean animation=true "= true, if animation shall be enabled";
   parameter Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB

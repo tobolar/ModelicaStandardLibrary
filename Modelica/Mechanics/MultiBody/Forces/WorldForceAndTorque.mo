@@ -10,7 +10,8 @@ model WorldForceAndTorque
     annotation (Placement(transformation(
         origin={0,100},
         extent={{16,-16},{-16,16}},
-        rotation=270)));
+        rotation=270)),
+      mustBeConnected="An enabled frame_resolve connector should be connected");
   Blocks.Interfaces.RealInput force[3](each final quantity="Force", each final unit=
                    "N")
     "x-, y-, z-coordinates of force resolved in frame defined by resolveInFrame"

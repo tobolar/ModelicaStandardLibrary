@@ -9,7 +9,8 @@ model Force
     annotation (Placement(transformation(
         origin={40,100},
         extent={{-16,-16},{16,16}},
-        rotation=90)));
+        rotation=90)),
+      mustBeConnected="An enabled frame_resolve connector should be connected");
   Modelica.Blocks.Interfaces.RealInput force[3](each final quantity="Force", each final unit="N")
     "x-, y-, z-coordinates of force resolved in frame defined by resolveInFrame"
     annotation (Placement(transformation(
