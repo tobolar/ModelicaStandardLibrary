@@ -8,7 +8,8 @@ model BasicForce
     annotation (Placement(transformation(
         origin={40,100},
         extent={{-16,-16},{16,16}},
-        rotation=90)));
+        rotation=90)),
+      mustBeConnected="Connector frame_resolve should be connected");
   Modelica.Blocks.Interfaces.RealInput force[3](each final quantity="Force", each final unit="N")
     "x-, y-, z-coordinates of force resolved in frame defined by resolveInFrame"
     annotation (Placement(transformation(
@@ -25,7 +26,6 @@ model BasicForce
   SI.Force f_b_0[3] "frame_b.f resolved in world frame";
 
 equation
-  assert(cardinality(frame_resolve) > 0, "Connector frame_resolve must be connected at least once and frame_resolve.r_0/.R must be set");
   frame_resolve.f = zeros(3);
   frame_resolve.t = zeros(3);
 
@@ -100,7 +100,8 @@ coordinates shall be resolved:
     <td>Resolve input force in frame_b (= default)</td></tr>
 
 <tr><td>frame_resolve</td>
-    <td>Resolve input force in frame_resolve (frame_resolve must be connected)</td></tr>
+    <td>Resolve input force in frame_resolve (frame_resolve must be connected and
+    frame_resolve.r_0/.R must be set)</td></tr>
 </table>
 
 <p>

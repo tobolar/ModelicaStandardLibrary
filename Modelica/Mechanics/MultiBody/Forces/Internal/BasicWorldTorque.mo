@@ -8,7 +8,8 @@ model BasicWorldTorque
     annotation (Placement(transformation(
         origin={0,100},
         extent={{16,-16},{-16,16}},
-        rotation=270)));
+        rotation=270)),
+      mustBeConnected="Connector frame_resolve should be connected");
 
   Modelica.Blocks.Interfaces.RealInput torque[3](each final quantity="Torque", each final unit="N.m")
     "x-, y-, z-coordinates of torque resolved in frame defined by resolveInFrame"
@@ -19,7 +20,6 @@ model BasicWorldTorque
     "Frame in which torque is resolved (1: world, 2: frame_b, 3: frame_resolve)";
 
 equation
-   assert(cardinality(frame_resolve) > 0, "Connector frame_resolve must be connected at least once and frame_resolve.r_0/.R must be set");
    frame_resolve.f = zeros(3);
    frame_resolve.t = zeros(3);
 
@@ -76,7 +76,8 @@ coordinates shall be resolved:
     <td>Resolve input torque in frame_b</td></tr>
 
 <tr><td>frame_resolve</td>
-    <td>Resolve input torque in frame_resolve (frame_resolve must be connected)</td></tr>
+    <td>Resolve input torque in frame_resolve (frame_resolve must be connected and
+    frame_resolve.r_0/.R must be set)</td></tr>
 </table>
 
 <p>
