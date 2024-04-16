@@ -42,7 +42,7 @@ The type of lever is given by the magnitude of <code>ratio</code> as follows:
         extent={{-100,-100},{100,100}}),
       graphics={
         Polygon(
-          points={{-6,-28},{22,50},{30,50},{36,46},{8,-32},{-6,-28}},
+          points={{-6,-30},{-6,50},{0,50},{6,50},{6,-30},{-6,-30}},
           lineColor={0,0,0},
           fillColor={160,215,160},
           fillPattern=FillPattern.Solid),
@@ -53,32 +53,40 @@ The type of lever is given by the magnitude of <code>ratio</code> as follows:
           pattern=LinePattern.None),
         Ellipse(
           extent={{-20,-10},{20,-50}},
-          startAngle=-47,
-          endAngle=273,
+          startAngle=-73,
+          endAngle=253,
           closure=EllipseClosure.None),
         Ellipse(
           extent={{-10,-20},{10,-40}},
           fillColor={175,190,175},
           fillPattern=FillPattern.Solid),
-        Line(points={{0,-54},{0,-30}},
-                                     color={0,127,0}),
-        Line(points={{0,-100},{0,-78}}, color={0,127,0}),
-        Text(
-          extent={{-150,100},{150,60}},
-          textColor={0,0,255},
-          textString="%name"),
-        Text(extent={{-100,-50},{100,-80}},
-          textString="ratio=%ratio"),
-        Line(points={{-100,0},{30,50}}, color={0,127,0}),
-        Line(points={{20,20},{100,0}}, color={0,127,0}),
+        Line(
+          points={{0,-54},{0,-30}},
+          color={0,127,0}),
+        Line(
+          points={{0,-100},{0,-78}},
+          color={0,127,0}),
+        Line(
+         points={{-98,0},{0,50}},
+         color={0,127,0}),
+        Line(
+          points={{0,20},{100,0}},
+          color={0,127,0}),
         Ellipse(
-          extent={{26,54},{34,46}},
+          extent={{-4,54},{4,46}},
           lineColor={0,127,0},
           fillColor={160,215,160},
           fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{16,24},{22,18}},
+          extent={{-4,24},{4,16}},
           lineColor={0,127,0},
           fillColor={160,215,160},
-          fillPattern=FillPattern.Solid)}));
+          fillPattern=FillPattern.Solid),
+        Text(
+          extent={{-150,100},{150,60}},
+          textColor={0,0,255},
+          textString="%name"),
+        Text(
+          extent={{-100,-50},{100,-80}},
+          textString="ratio=%ratio")}));
 end IdealLever;
