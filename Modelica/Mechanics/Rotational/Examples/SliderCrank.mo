@@ -1,5 +1,5 @@
-within Modelica.Mechanics.Rotational.Examples "Slider-crank mechanism";
-model SliderCrank
+within Modelica.Mechanics.Rotational.Examples;
+model SliderCrank "Slider-crank mechanism"
   extends Modelica.Icons.Example;
 
   Components.IdealCrankR2T idealCrankR2T(
