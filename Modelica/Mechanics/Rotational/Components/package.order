@@ -15,6 +15,7 @@ IdealGear
 LossyGear
 IdealPlanetary
 Gearbox
+IdealCrankR2T
 IdealGearR2T
 IdealRollingWheel
 InitializeFlange
@@ -23,4 +24,3 @@ AngleToTorqueAdaptor
 TorqueToAngleAdaptor
 GeneralAngleToTorqueAdaptor
 GeneralTorqueToAngleAdaptor
-IdealCrankR2T
